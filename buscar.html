@@ -34,26 +34,46 @@
 
 		 <form action="resultado.html" method="get">
                 <div>
-                    <h3 class="formulario">Búsqueda</h3>
-                    <label class="formulario" for="titulo">Titulo</label>
-                    <input class="formulario" type="text" id="titulo" placeholder="..." />
-                    <br />
-                    <br />
-                    <label class="formulario" for="usuario">Usuario</label>
-                    <input class="formulario" type="text" id="usuario" />
-                    <br />
-                    <br />
-                    <label class="formulario" for="fecha">Fecha entre </label>
-                    <input class="formulario" type="date" id="fecha">
-                    y fecha
-                    <input class="formulario" type="date" id="fecha">
-                    <br />
-                    <br />
-                    <label class="formulario" for="pais">País </label>
-                    <input class="formulario" type="text" id="pais" placeholder="...">
-                    <br />
-                    <br />
-                    <input type="submit" value="Buscar" class="boton" />
+					<h3 class="formulario">Búsqueda</h3>
+					
+					<section>
+						<label class="formulario" for="nombre">Nombre</label>
+						<input class="formulario" type="text" name="nombre"/>
+					</section>
+
+					<section>
+						<label class="formulario" for="ingredientes">Ingredientes</label>
+						<input class="formulario" type="text" name="ingredientes" />
+					</section>
+					
+					<section>
+						<label class="formulario" for="tiempo">Tiempo de preparación:</label><br/>
+						Entre
+						<input type="number" name="tiempo" min="1" max="300">
+						min y
+						<input type="number" name="tiempo" min="1" max="300"> min
+					</section>
+					
+					<section>
+						<label class="formulario" for="dificultad">Dificultad</label>
+						<select name="dificultad">
+							<option value="facil">Fácil</option>
+							<option value="media">Media</option>
+							<option value="dificil">Difícil</option>
+						</select> 
+					</section>     
+
+					<section>
+						<label class="formulario" for="comensales">Número de comensales</label>
+						<input type="number" name="comensales" min="1" max="300">  
+					</section>
+
+					<section>
+						<label class="formulario" for="autor">Autor</label>
+						<input type="text" name="autor">  
+					</section>
+					
+					<input type="submit" value="Buscar" class="boton" />
                 </div>
                 <br />
         </form>
