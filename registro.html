@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+
+
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  </head>
+
+  <body>
+
+  <!-- Header -->
+
+  <div id="header">
+    <h1><a href="index.html">SweetHome</a></h1>
+    <nav id="nav">
+      <ul>
+        <li ><a href="index.html">Inicio</a></li>
+        <li><a href="buscar.html">Buscar</a></li>
+        <li><a href="login.html">Inicia sesión</a></li>
+        <li class="active"><a href="registro.html">Regístrate</a></li>
+        <li><a href="logout.html">Cerrar sesión</a></li>
+        <li><a href="nueva-receta.html">Nueva receta</a></li>
+
+      </ul>
+    </nav>
+  </div>
+
+  <!-- /Header -->
+
+  <!-- Main -->
+
+  <div id="main">
+
+    
+      
+     <div class=formulario>
+       <fieldset id=cuadradito>
+        <form action="login.html" id=formulario>
+          <section>
+            <label for="nombre"> Nombre de usuario: </label>
+            <input name="nombre" type="text" pattern="[a-zA-Z][A-Za-z0-9]{5,20}" title="Debe EMPEZAR por una LETRA. NO debe contener ESPACIOS EN BLANCO, su LOGITUD debe ser ENTRE 6 Y 20. NO SON VALIDOS CARACTERES ESPECIALES.  " required autofocus> 
+
+          </section>
+
+          <section>
+            <label for="pass"> Contraseña: </label>
+            <input type="password" name="pass" pattern="[A-Za-z0-9_-]{7,20}" title="NO puede contener espacios en blanco. UNICAMENTE números, letras (mayusculas o minusculas) y los caracteres - o _. La LONGITUD debe estar entre 8 y 20" required>
+          </section>
+
+          <section>
+            <label for="repass"> Repetir contraseña: </label>
+            <input type="password" name="repass" pattern="[A-Za-z0-9_-]{7,20}" title="NO puede contener espacios en blanco. UNICAMENTE números, letras (mayusculas o minusculas) y los caracteres - o _. La LONGITUD debe estar entre 8 y 20" required>
+          </section>
+
+          <section>
+            <label for="email"> Email: </label>
+            <input type="email" name="email" required>
+          </section>
+
+          <section>
+            <label for="fechanac"> Fecha de nacimiento: </label>
+            <input type="date" name="fechanac" required>
+          </section>
+            <a href="index.html">Volver al inicio</a>
+          <input type="submit" value="Registrarse">
+
+
+
+        </form>
+        </fieldset>
+      </div>
+    
+
+  </div>
+
+  <!-- /Main -->
+
+
+
+  <!-- Footer -->
+  <div id="footer">
+    
+  </div>
+
+  <!-- /Footer -->
+  </body>
+</html>
