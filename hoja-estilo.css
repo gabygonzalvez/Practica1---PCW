@@ -1,0 +1,53 @@
+
+body {
+	background-image: url("img/1.png");
+	background-repeat: repeat;
+	font-family: 'Ubuntu', sans-serif;
+    padding-top: 44px;	
+}
+
+.logo {		
+	width: 300px; 
+	height: 100px;
+}
+
+div > nav > ul {
+	list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+div > nav > ul > li {
+	display: inline;
+	float: left;
+	border-right: 1px solid white;
+}
+
+div > nav > ul > li:last-child {
+    border-right: none;
+}
+
+div > nav > ul > li a {
+	color: #ff8b94;
+	text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+	display: block;
+	background-color: #a8e6cf
+}
+
+div > nav > ul > li a:hover {
+    background-color: #ffaaa5;
+    color: white;
+}
+
+div > nav > ul > li a.active {
+    background-color: #ffaaa5;
+    color: white;
+}
+
+div > select {  /*seleccion del orden de recetas inicio*/
+	margin: 0;
+    padding-top: : 20px;
+}
