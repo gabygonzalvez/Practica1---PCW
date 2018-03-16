@@ -6,6 +6,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<link rel="stylesheet" href="hoja-estilo.css">
 		<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 	</head>
 
 	<body>
@@ -15,8 +16,10 @@
 
 	<!-- Header -->
 
-	<div>
+	<div class="cabecera">
 		<h1><a href="index.html"><img class="logo" src="img/logo.png"></a></h1>
+		<h3 class="subtitulo"> Tus recetas favoritas de postres</h3>
+		
 		<nav>
 			<ul>
 				<li class="active"><a href="index.html">Inicio</a></li>
@@ -37,21 +40,34 @@
 
 	<!-- Main -->
 
-	<div>
-		<br />
+	<div class="cuerpo">
+		<form action="index.html"><br>
 		<select name="Orden">
 		  <option value="asc">Ascendente</option>
 		  <option value="desc">Descendente</option>
 		  <option value="val">Valoración</option>
 		  <option value="fecha">Fecha</option>
 		</select>
-
 		<input name="Buscar" type="text">
-
+		<input type="submit" value="Aceptar" class="boton">
+		</form>
+		<h1> Últimas recetas</h1>
+		<hr>
 		<div class="fila">
+
 			<section class="recetaHome">
-						<a href="receta.html" class="tituloHome">Rollcake de terciopelo rosa con glaseado y virutas</a>
-						<a href="receta.html" class="fotoHome"><img src="img/roll.jpg" alt=""></a>
+						<h4><a href="receta.html" class="tituloHome">Rollcake de terciopelo rosa<br> con glaseado y virutas</a></h4>
+						<a href="receta.html"><img src="img/roll.jpg" class="fotoHome" alt="Rollcake"></a>
+						<ul>
+							<li><b><a href="buscar.html">Autor: </a></b>Pepito Palotes </li>
+							<li><b>Likes</b> 2500 </li>
+							<li><b>Dislikes</b> 18 </li>
+							<li><b>Fecha</b> 14-02-18 </li>
+						</ul>
+			</section>
+			<section class="recetaHome">
+						<h4><a href="receta.html" class="tituloHome">Pancakes americanos</a></h4>
+						<a href="receta.html"><img src="img/pancakes.jpg" class="fotoHome" alt="Pancakes"></a>
 						<ul>
 							<li><b><a href="buscar.html">Autor</a></b>Pepito Palotes </li>
 							<li><b>Likes</b> 2500 </li>
@@ -60,50 +76,40 @@
 						</ul>
 			</section>
 			<section class="recetaHome">
-						<a href="receta.html" class="tituloHome">Pancakes americanos</a>
-						<a href="receta.html" class="fotoHome"><img src="img/pancakes.jpg" alt=""></a>
+						<h4><a href="receta.html" class="tituloHome">Cupcakes de vainilla</a></h4>
+						<a href="receta.html" ><img src="img/cupcakes.jpg" class="fotoHome" alt="Cupcakes"></a>
 						<ul>
-							<li><b><a href="buscar.html">Autor</a></b>Pepito Palotes </li>
+							<li><b><a href="buscar.html">Autor: </a></b>Pepito Palotes </li>
 							<li><b>Likes</b> 2500 </li>
 							<li><b>Dislikes</b> 18 </li>
 							<li><b>Fecha</b> 14-02-18 </li>
 						</ul>
 			</section>
 			<section class="recetaHome">
-						<a href="receta.html" class="tituloHome">Cupcakes de vainilla</a>
-						<a href="receta.html" class="fotoHome"><img src="img/cupcakes.jpg" alt=""></a>
+						<h4><a href="receta.html" class="tituloHome">Sandwich de helado de oreos</a></h4>
+						<a href="receta.html"><img src="img/oreo.jpg" class="fotoHome" alt="Oreo"></a>
 						<ul>
-							<li><b><a href="buscar.html">Autor</a></b>Pepito Palotes </li>
+							<li><b><a href="buscar.html">Autor: </a></b>Pepito Palotes </li>
 							<li><b>Likes</b> 2500 </li>
 							<li><b>Dislikes</b> 18 </li>
 							<li><b>Fecha</b> 14-02-18 </li>
 						</ul>
 			</section>
 			<section class="recetaHome">
-						<a href="receta.html" class="tituloHome">Sandwich de helado de oreos</a>
-						<a href="receta.html" class="fotoHome"><img src="img/oreo.jpg" alt=""></a>
+						<h4><a href="receta.html" class="tituloHome">Batido de vainilla</a></h4>
+						<a href="receta.html"><img src="img/batidos.jpeg" class="fotoHome" alt="Batidos"></a>
 						<ul>
-							<li><b><a href="buscar.html">Autor</a></b>Pepito Palotes </li>
+							<li><b><a href="buscar.html">Autor: </a></b>Pepito Palotes </li>
 							<li><b>Likes</b> 2500 </li>
 							<li><b>Dislikes</b> 18 </li>
 							<li><b>Fecha</b> 14-02-18 </li>
 						</ul>
 			</section>
 			<section class="recetaHome">
-						<a href="receta.html" class="tituloHome">Batido de vainilla</a>
-						<a href="receta.html" class="fotoHome"><img src="img/batidos.jpg" alt=""></a>
+						<h4><a href="receta.html" class="tituloHome">Galletas de chocolate y nubes</a></h4>
+						<a href="receta.html" ><img src="img/galletas.jpg" class="fotoHome" alt="Galletas"></a>
 						<ul>
-							<li><b><a href="buscar.html">Autor</a></b>Pepito Palotes </li>
-							<li><b>Likes</b> 2500 </li>
-							<li><b>Dislikes</b> 18 </li>
-							<li><b>Fecha</b> 14-02-18 </li>
-						</ul>
-			</section>
-			<section class="recetaHome">
-						<a href="receta.html" class="tituloHome">Galletas de chocolate y nubes</a>
-						<a href="receta.html" class="fotoHome"><img src="img/galletas.jpg" alt=""></a>
-						<ul>
-							<li><b><a href="buscar.html">Autor</a></b>Pepito Palotes </li>
+							<li><b><a href="buscar.html">Autor: </a></b>Pepito Palotes </li>
 							<li><b>Likes</b> 2500 </li>
 							<li><b>Dislikes</b> 18 </li>
 							<li><b>Fecha</b> 14-02-18 </li>
@@ -118,7 +124,13 @@
 
 
 	<!-- Footer -->
-	<div id="footer">
+	<div class="pie">
+
+		
+		<a href="index.html">Volver a la página de inicio</a><br>
+		<a href="acerca.html"> Acerca de Nosotros</a>
+		<p> © María Sánchez & Gabriela Gonzalvez<br>
+		 Marzo 2018</p>
 		
 	</div>
 

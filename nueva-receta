@@ -61,7 +61,7 @@
             <label for="elaboracion"> Dificultad: </label>
             <input type="number" name="elaboracion">
           </section>
-
+          <br><br>
          
 
             <a href="index.html">Volver al inicio</a>
