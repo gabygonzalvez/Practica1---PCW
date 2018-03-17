@@ -41,7 +41,7 @@ hr {
 	padding-left: 3%; 
 	padding-right: 3%; 
 }
-h1{
+h1, h2, h3, h4{
 	color:#6d3e3e;
 }
 
@@ -60,8 +60,8 @@ padding-bottom: 1%;
 .logo{
 margin: 0 auto;
 display: block;
-	width: 30%;
-	height: 100%;
+width: 30%;
+height: 100%;
 	
 }
 
@@ -105,8 +105,8 @@ div > nav > ul > li a:hover {
 }
 
 div > nav > ul > li a.active {
-    background-color: #ffaaa5;
-    color: white;
+    background-color: #FFEEE7;
+    color: #FF8B94;
 }
 
 
@@ -115,8 +115,8 @@ div > nav > ul > li a.active {
 
 .fotoHome{
 
-width:100%;
-text-align:center;
+	width:100%;
+	text-align:center;
 }
 
 body>div>div{
@@ -147,3 +147,113 @@ body>div>div>section{
  	color: #a56666;
  	transition: 1s ease;
 }
+
+
+
+/*CUERPO FORMULARIOS*/
+
+h2.formulario {
+	text-align: center;
+}
+
+input[type=text], select, [type=password], [type=email], [type=date] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #6d3e3e;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=number] {
+	width: 20%;
+	padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #6d3e3e;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+textarea{
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #6d3e3e;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 100%;
+	background-color: #c5f9f9;
+	color: #845B5B;
+	text-transform: capitalize;
+	font-weight: bold;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+	text-transform: capitalize;
+    background-color: #FFEEE7;
+    color:#FF8B94;
+	font-weight: bold;
+}
+
+div.formulario {
+	margin: auto;
+	width: 50%;
+    border-radius: 5px;
+	background-color: #FFEEE7;
+    padding: 20px;
+}
+
+
+/*FORMULARIO INDEX PEQUEÑO*/
+
+/*
+#formularioIndex > form > input[type=text], select {
+    width: 50%;
+    padding: 8px 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #6d3e3e;
+    border-radius: 4px;
+    box-sizing: border-box;
+}*/
+
+#formularioIndex > form{
+	display: inline;
+	float: left;
+	width: 20%;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+
+#formularioIndex > form > input[type=submit] {
+    width: 40%;
+	background-color: #c5f9f9;
+	color: #845B5B;
+	text-transform: capitalize;
+	font-weight: bold;
+    padding: 8px 0;
+    margin: 0 auto;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#formularioIndex > form > input[type=submit]:hover {
+	text-transform: capitalize;
+    background-color: #FFEEE7;
+    color:#FF8B94;
+	font-weight: bold;
+}
+

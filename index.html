@@ -22,7 +22,7 @@
 		
 		<nav>
 			<ul>
-				<li class="active"><a href="index.html">Inicio</a></li>
+				<li><a href="index.html" class="active">Inicio</a></li>
 				<li><a href="buscar.html">Buscar</a></li>
 				<li><a href="login.html">Inicia sesión</a></li>
 				<li><a href="registro.html">Regístrate</a></li>
@@ -41,16 +41,28 @@
 	<!-- Main -->
 
 	<div class="cuerpo">
-		<form action="index.html"><br>
-		<select name="Orden">
-		  <option value="asc">Ascendente</option>
-		  <option value="desc">Descendente</option>
-		  <option value="val">Valoración</option>
-		  <option value="fecha">Fecha</option>
-		</select>
-		<input name="Buscar" type="text">
-		<input type="submit" value="Aceptar" class="boton">
-		</form>
+
+		<div id="formularioIndex">
+			<form action="index.html"><br/>
+				<label for="orden">Orden de recetas:</label>
+				<select id="orden">
+				  <option value="asc">Ascendente</option>
+				  <option value="desc">Descendente</option>
+				  <option value="val">Valoración</option>
+				  <option value="fecha">Fecha</option>
+				</select>
+
+				<input type="submit" value="Aceptar">
+			</form>
+
+			<form>
+				<label for="buscar">Búsqueda rápida:</label>
+				<input id="buscar" type="text" placeholder="Búsqueda...">
+
+				<input type="submit" value="Buscar"/>
+			</form>
+		</div>
+
 		<h1> Últimas recetas</h1>
 		<hr>
 		<div class="fila">

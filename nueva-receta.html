@@ -13,7 +13,7 @@
 
   <!-- Header -->
 
- <div class="cabecera">
+  <div class="cabecera">
     <h1><a href="index.html"><img class="logo" src="img/logo.png"></a></h1>
     <h3 class="subtitulo"> Tus recetas favoritas de postres</h3>
 
@@ -21,10 +21,10 @@
       <ul>
         <li><a href="index.html" >Inicio</a></li>
         <li><a href="buscar.html">Buscar</a></li>
-        <li><a href="login.html" class="active">Inicia sesión</a></li>
+        <li><a href="login.html">Inicia sesión</a></li>
         <li><a href="registro.html">Regístrate</a></li>
         <li><a href="logout.html">Cerrar sesión</a></li>
-        <li><a href="nueva-receta.html">Nueva receta</a></li>
+        <li><a href="nueva-receta.html" class="active">Nueva receta</a></li>
         <li style="float:right"><a href="acerca.html">Acerca de nosotros</a></li>
       </ul>
     </nav>
@@ -36,17 +36,25 @@
   <!-- Main -->
 
   <div class="cuerpo">
-    <h2 class="formulario">Inicia sesión</h2>
-
+    <h2 class="formulario">Nueva receta</h2>
     
+      
      <div class="formulario">
         <form action="login.html">
-            <label for="nombre"> Login: </label>
-            <input id="nombre" type="text" pattern="[a-zA-Z][A-Za-z0-9]" title="Debe EMPEZAR por una LETRA. NO debe contener ESPACIOS EN BLANCO, su LOGITUD debe ser ENTRE 6 Y 20. NO SON VALIDOS CARACTERES ESPECIALES.  " required autofocus/> 
+            <label for="nombrerec"> Nombre de la receta: </label>
+            <input id="nombre" type="text" required autofocus> 
 
+            <label for="elaboracion"> Elaboración: </label>
+            <textarea id="elaboracion"></textarea>
 
-            <label for="pass"> Contraseña: </label>
-            <input type="password" id="pass" pattern="[A-Za-z0-9_-]{7,20}" title="NO puede contener espacios en blanco. UNICAMENTE números, letras (mayusculas o minusculas) y los caracteres - o _. La LONGITUD debe estar entre 8 y 20" required/>
+            <label for="com"> Número de comensales: </label>
+            <input type="text" id="com">
+
+            <label for="tiem"> Tiempo de elaboración: </label>
+            <input type="number" id="tiem">
+
+            <label for="dif"> Dificultad: </label>
+            <input type="number" id="dif">         
 
           <input type="submit" value="Iniciar Sesión">
             <a href="index.html">Volver al inicio</a><br />
