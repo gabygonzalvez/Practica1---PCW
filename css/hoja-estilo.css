@@ -1,6 +1,6 @@
 
 body {
-	background-image: url("img/1.png");
+	background-image: url("../img/1.png");
 	background-repeat: repeat;
 	font-family: 'Montserrat', sans-serif;
 	position:relative;
@@ -10,6 +10,13 @@ body {
 	
 }
 
+#hamburguesa {
+	visibility: hidden;
+}
+
+.hamburguesa {
+	visibility: hidden;
+}
 
 a{
 	color:#845B5B;
@@ -30,6 +37,7 @@ hr {
 
 .subtitulo{
 	text-align: center;
+	padding-bottom: 0px;
 }
 .cabecera{
 	position:relative;
@@ -86,6 +94,7 @@ div > nav > ul > li {
 }
 
 div > nav > ul > li:last-child {
+	float:right;
     border-right: none;
 }
 

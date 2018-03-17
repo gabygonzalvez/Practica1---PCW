@@ -1,0 +1,61 @@
+
+
+#hamburguesa {
+	visibility: hidden;
+}
+
+.hamburguesa {
+	visibility: hidden;
+}
+
+
+.subtitulo{
+	padding-bottom: 0px;
+}
+
+
+.logo{
+	width: 50%;
+}
+
+
+/*HEADER, BARRA DE NAVEGACION*/
+
+
+div > nav > ul > li {
+	display: block;
+	float: none;
+	padding-bottom: 5px;
+}
+
+div > nav > ul > li:last-child {
+	float: none;
+    border-right: none;
+}
+
+div > nav > ul > li a {
+	padding: 0 20px;
+}
+
+
+
+/*CUERPO*/
+
+
+
+/*CUERPO FORMULARIOS*/
+
+div.formulario {
+	width: 70%;
+}
+
+
+/*FORMULARIO INDEX PEQUEÑO*/
+
+#formularioIndex > form{
+	width: 30%;
+}
+
+#formularioIndex > form > input[type=submit] {
+    width: 50%;
+}
