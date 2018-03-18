@@ -19,16 +19,26 @@
 }
 
 
+
 /*HEADER, BARRA DE NAVEGACION*/
 
 
+div > nav > ul >li > a>dt{
+	display:none;
+}
+
 div > nav > ul > li {
+
 	display: block;
 	float: none;
 	padding-bottom: 5px;
+	color: black;
 }
 
+
+
 div > nav > ul > li:last-child {
+	
 	float: none;
     border-right: none;
 }

@@ -9,6 +9,7 @@
 	    <link rel="stylesheet" href="css/estilo-peque.css" media="screen and (max-width: 480px)" />
 		<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+		<link href="font/cake.css" rel="stylesheet">
 	</head>
 
 	<body>
@@ -24,18 +25,18 @@
 
 
 		<nav>
-			<ul>
-				<li><a href="index.html">Inicio</a></li>
-				<li><a href="buscar.html" class="active">Buscar</a></li>
-				<li><a href="login.html">Inicia sesión</a></li>
-				<li><a href="registro.html">Regístrate</a></li>
-				<li><a href="logout.html">Cerrar sesión</a></li>
-				<li><a href="nueva-receta.html">Nueva receta</a></li>
-				<li><a href="acerca.html">Acerca de nosotros</a></li>
+      <ul>
+        <li><a href="index.html"><span class="icon-food"></span><dt> Inicio</dt></a></li>
+        <li> <a href="buscar.html" class="icon-search-circled"><dt>Buscar</dt></a></li>
+        <li> <a href="login.html" class="icon-user"> <dt>Inicia sesión</dt></a></li>
+        <li> <a href="registro.html" class="icon-user-plus"> <dt> Regístrate</dt></a></li>
+        <li> <a href="logout.html" class="icon-logout"> <dt>Cerrar sesión</dt></a></li>
+        <li> <a href="nueva-receta.html" class="icon-plus-circled"><dt>Nueva receta</dt></a></li>
+        <li> <a href="acerca.html" class="icon-emo-coffee">- <dt>Sobre nosotros</dt></a></li>
 
-			</ul>
-		</nav>
-		</nav>
+      </ul>
+    </nav>
+		
 	</div>
 
 	<!-- /Header -->
@@ -50,7 +51,7 @@
 			 <form action="resultado.html">
 
 				<label for="nombre">Nombre</label>
-				<input class="formulario" type="text" id="nombre" placeholder="Nombre de receta..." />
+				<input class="formulario" type="text" id="nombre" placeholder="Nombre de receta..." autofocus/>
 
 				<label for="ingredientes">Ingredientes</label>
 				<input class="formulario" type="text" id="ingredientes" placeholder="Harina, azúcar, chocolate..." />
@@ -75,10 +76,102 @@
 				<br />
 				<label for="autor">Autor</label>
 				<input type="text" id="autor" placeholder="Nombre de autor...">  
-			
+
 				<input type="submit" value="Buscar"/>
 	        </form>
         </div>
+
+
+       
+        
+		<br><hr>
+		<h1> Resultado de búsqueda</h1>
+		<div id="formularioIndex">
+			<form action="index.html"><br/>
+				<label for="orden"><strong>Orden de recetas:</strong></label>
+				<select id="orden">
+				  <option value="asc">Ascendente</option>
+				  <option value="desc">Descendente</option>
+				  <option value="val">Valoración</option>
+				  <option value="fecha">Fecha</option>
+				</select>
+
+				<input type="submit" value="Aceptar">
+			</form>
+		</div>
+		<div>
+
+			<section>
+						<h4><a href="receta.html" class="tituloHome">Rollcake de terciopelo rosa<br> con glaseado y virutas</a></h4>
+						<a href="receta.html"><img src="img/roll.jpg" class="fotoHome" alt="Rollcake"></a>
+						<ul>
+							<li><b><a href="buscar.html">Autor: </a></b>Pepito Palotes </li>
+							<li><b>Likes</b> 2500 </li>
+							<li><b>Dislikes</b> 18 </li>
+							<li><b>Fecha</b> 14-02-18 </li>
+						</ul>
+			</section>
+			<section>
+						<h4><a href="receta.html" class="tituloHome">Pancakes americanos</a></h4>
+						<a href="receta.html"><img src="img/pancakes.jpg" class="fotoHome" alt="Pancakes"></a>
+						<ul>
+							<li><b><a href="buscar.html">Autor</a></b>Pepito Palotes </li>
+							<li><b>Likes</b> 2500 </li>
+							<li><b>Dislikes</b> 18 </li>
+							<li><b>Fecha</b> 14-02-18 </li>
+						</ul>
+			</section>
+			<section>
+						<h4><a href="receta.html" class="tituloHome">Cupcakes de vainilla</a></h4>
+						<a href="receta.html" ><img src="img/cupcakes.jpg" class="fotoHome" alt="Cupcakes"></a>
+						<ul>
+							<li><b><a href="buscar.html">Autor: </a></b>Pepito Palotes </li>
+							<li><b>Likes</b> 2500 </li>
+							<li><b>Dislikes</b> 18 </li>
+							<li><b>Fecha</b> 14-02-18 </li>
+						</ul>
+			</section>
+			<section>
+						<h4><a href="receta.html" class="tituloHome">Sandwich de helado de oreos</a></h4>
+						<a href="receta.html"><img src="img/oreo.jpg" class="fotoHome" alt="Oreo"></a>
+						<ul>
+							<li><b><a href="buscar.html">Autor: </a></b>Pepito Palotes </li>
+							<li><b>Likes</b> 2500 </li>
+							<li><b>Dislikes</b> 18 </li>
+							<li><b>Fecha</b> 14-02-18 </li>
+						</ul>
+			</section>
+			<section>
+						<h4><a href="receta.html" class="tituloHome">Batido de vainilla</a></h4>
+						<a href="receta.html"><img src="img/batidos.jpeg" class="fotoHome" alt="Batidos"></a>
+						<ul>
+							<li><b><a href="buscar.html">Autor: </a></b>Pepito Palotes </li>
+							<li><b>Likes</b> 2500 </li>
+							<li><b>Dislikes</b> 18 </li>
+							<li><b>Fecha</b> 14-02-18 </li>
+						</ul>
+			</section>
+			<section>
+						<h4><a href="receta.html" class="tituloHome">Galletas de chocolate y nubes</a></h4>
+						<a href="receta.html" ><img src="img/galletas.jpg" class="fotoHome" alt="Galletas"></a>
+						<ul>
+							<li><b><a href="buscar.html">Autor: </a></b>Pepito Palotes </li>
+							<li><b>Likes</b> 2500 </li>
+							<li><b>Dislikes</b> 18 </li>
+							<li><b>Fecha</b> 14-02-18 </li>
+						</ul>
+			</section>
+		</div>
+
+		<div class="paginacion">
+			<a href="index.html">&laquo;</a>  <!-- caracter « -->
+			<a href="index.html" class="act">1</a>
+			<a href="index.html">2</a>
+			<a href="index.html">&raquo;</a>
+		</div><br><br>
+
+	</div>
+
 
 	</div>
 

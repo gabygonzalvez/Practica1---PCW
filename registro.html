@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/estilo-peque.css" media="screen and (max-width: 480px)" />
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link href="font/cake.css" rel="stylesheet">
   </head>
 
   <body>
@@ -22,15 +23,16 @@
     <input type="checkbox" class="checkbox" id="hamburguesa"/>
     <label for="hamburguesa" class="hamburguesa"></label>
 
-    <nav>
+   <nav>
       <ul>
-        <li><a href="index.html" >Inicio</a></li>
-        <li><a href="buscar.html">Buscar</a></li>
-        <li><a href="login.html">Inicia sesión</a></li>
-        <li><a href="registro.html" class="active">Regístrate</a></li>
-        <li><a href="logout.html">Cerrar sesión</a></li>
-        <li><a href="nueva-receta.html">Nueva receta</a></li>
-        <li><a href="acerca.html">Acerca de nosotros</a></li>
+        <li><a href="index.html"><span class="icon-food"></span><dt> Inicio</dt></a></li>
+        <li> <a href="buscar.html" class="icon-search-circled"><dt>Buscar</dt></a></li>
+        <li> <a href="login.html" class="icon-user"> <dt>Inicia sesión</dt></a></li>
+        <li> <a href="registro.html" class="icon-user-plus"> <dt> Regístrate</dt></a></li>
+        <li> <a href="logout.html" class="icon-logout"> <dt>Cerrar sesión</dt></a></li>
+        <li> <a href="nueva-receta.html" class="icon-plus-circled"><dt>Nueva receta</dt></a></li>
+        <li> <a href="acerca.html" class="icon-emo-coffee">- <dt>Sobre nosotros</dt></a></li>
+
       </ul>
     </nav>
 
@@ -46,8 +48,10 @@
       
      <div class="formulario">
         <form action="login.html">
-            <label for="nombre"> Nombre de usuario: </label>
-            <input id="nombre" type="text" pattern="[a-zA-Z][A-Za-z0-9]{5,20}" title="Debe EMPEZAR por una LETRA. NO debe contener ESPACIOS EN BLANCO, su LOGITUD debe ser ENTRE 6 Y 20. NO SON VALIDOS CARACTERES ESPECIALES.  " required autofocus> 
+            <label for="nombreu"> Nombre de usuario: </label>
+            <input id="nombreu" type="text" pattern="[a-zA-Z][A-Za-z0-9]{5,20}" title="Debe EMPEZAR por una LETRA. NO debe contener ESPACIOS EN BLANCO, su LOGITUD debe ser ENTRE 6 Y 20. NO SON VALIDOS CARACTERES ESPECIALES.  " required autofocus> 
+            <label for="nombre"> Nombre: </label>
+            <input id="nombre" type="text" required > 
 
 
             <label for="pass"> Contraseña: </label>

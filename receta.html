@@ -9,6 +9,8 @@
 	    <link rel="stylesheet" href="css/estilo-peque.css" media="screen and (max-width: 480px)" />
 		<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+		<link href="font/cake.css" rel="stylesheet">
+
 	</head>
 
 	<body>
@@ -24,17 +26,17 @@
 
 
 		<nav>
-			<ul>
-				<li><a href="index.html">Inicio</a></li>
-				<li><a href="buscar.html">Buscar</a></li>
-				<li><a href="login.html">Inicia sesión</a></li>
-				<li><a href="registro.html">Regístrate</a></li>
-				<li><a href="logout.html">Cerrar sesión</a></li>
-				<li><a href="nueva-receta.html">Nueva receta</a></li>
-				<li><a href="acerca.html">Acerca de nosotros</a></li>
+      <ul>
+        <li><a href="index.html"><span class="icon-food"></span><dt> Inicio</dt></a></li>
+        <li> <a href="buscar.html" class="icon-search-circled"><dt>Buscar</dt></a></li>
+        <li> <a href="login.html" class="icon-user"> <dt>Inicia sesión</dt></a></li>
+        <li> <a href="registro.html" class="icon-user-plus"> <dt> Regístrate</dt></a></li>
+        <li> <a href="logout.html" class="icon-logout"> <dt>Cerrar sesión</dt></a></li>
+        <li> <a href="nueva-receta.html" class="icon-plus-circled"><dt>Nueva receta</dt></a></li>
+        <li> <a href="acerca.html" class="icon-emo-coffee">- <dt>Sobre nosotros</dt></a></li>
 
-			</ul>
-		</nav>
+      </ul>
+    </nav>
 	</div>
 
 	<!-- /Header -->
@@ -57,14 +59,14 @@
 				</div>
 
 				<ul>
-					<li><b><a href="buscar.html">Autor:</a></b>Pepito Palotes </li>
+					<li><b><a href="buscar.html">Autor: </a></b>Pepito Palotes </li>
 					<li><b>Tiempo de elaboración:</b> 20 min</li>
 					<li><b>Dificultad:</b> Media</li>
 					<li><b>Número de comensales:</b> 2</li>
 					<li><b>Likes:</b> 2500 </li>
 					<li><b>Dislikes:</b> 18 </li>
 					<li><b>Fecha:</b> 14-02-18 </li>				
-					<li><b><a href="receta.html">Número de comentarios:</a></b> 150 </li>
+					<li><b><a href="#comentarios">Número de comentarios:</a></b> 150 </li>
 				</ul>
 
 			</figure>
@@ -88,13 +90,41 @@
 					En una sartén bien caliente, derretir una muesca de manteca. Verter 1/4 de taza de la mezcla en el centro de la sartén. Cocinar hasta que comiencen a burbujear y se dore la parte inferior. Dar vuelta, y dorar del otro lado.
 					Servir los pancakes con manteca, mermelada, miel o el dulce que más te guste.
 				</p>
-			</section>
+			</section><br>
+			<div class="likes">
+				<h3> Me gusta <button> <span class="icon-heart"></span></button></h3> 
+				<h3> No me gusta <button><span class="icon-heart-empty"></span></button></h3> 
 			
+			</div>
+			
+		</div><br><hr>
+
+		<h2>COMENTARIOS</h2>
+
+		<div class="formulario">
+			<form>
+				<A name="comentarios"><h3>Escribe un comentario</h3></a>
+				<input type="text" placeholder="Título" maxlength="50" required>
+				<textarea placeholder="Escribe aquí tu comentario..." required></textarea>
+				<input type="submit" value="Enviar comentario" >
+			</form><br>
+			<article>
+				<h3>¡Me ha encantado! <small><i><small>   Yo - Domingo, 28/02/2018, 14:09h</small></i></small></h3>
+				<p> Me ha parecido una comida super guay! A mi abuela le ha encantado, muy contenta!</p>
+			</article>
+			<article>
+				<h3>Sinceramente buenísimos <small><i><small>   Camila - Jueves, 10/03/2018, 23:40h</small></i></small></h3>
+				<p> Estaba un poco preocupada al principio, porque muchos de los ingredientes necesarios no se encuentran disponibles en el supermercado de al lado de mi casa, pero ¡madre mia! aun así estaba delicioso, muchas gracias por compartir semejante receta, ¡un 10!</p>
+			</article>
+			<figure class="paginacion">
+				<div>
+				<a href="receta.html">&laquo;</a>  <!-- caracter « -->
+				<a href="receta.html" class="act">1</a>
+				<a href="receta.html">2</a>
+				<a href="receta.html">&raquo;</a>
+			</div><br><br>
+		</figure>
 		</div>
-
-
-		
-
 	</div>
 
 	<!-- /Main -->

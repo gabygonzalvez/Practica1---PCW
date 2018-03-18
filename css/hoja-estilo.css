@@ -22,11 +22,13 @@ a{
 	color:#845B5B;
 	text-decoration: none;
 	font-weight: bold;
+	transition: 0.5s ease-out;
 }
 a:hover{
 	color:#FF8B94;
 	text-decoration: none;
 	font-weight: bold;
+	transition: 0.5s ease;
 }
 
 hr { 
@@ -59,9 +61,9 @@ text-align: center;
 margin-top: 3%;
 padding-top: 3%;
 padding-bottom: 1%;
-	width: 100%;
-	height: 100%;
-	background-color: #ffbda3;
+width: 100%;
+height: 100%;
+background-color: #ffbda3;
 
 }
 
@@ -78,8 +80,8 @@ height: 100%;
 
 
 
-div > nav > ul {
-	
+
+div > nav > ul{	
 	list-style-type: none;
     margin: 0;
     padding: 0;
@@ -90,7 +92,9 @@ div > nav > ul {
 div > nav > ul > li {
 	display: inline;
 	float: left;
-	
+	margin: 0;
+    padding: 0;
+    overflow:hidden;
 }
 
 div > nav > ul > li:last-child {
@@ -144,7 +148,6 @@ body>div>div>section{
 	padding: 1% 5%;
 	width: 200px;
 	height: 400px;
-
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
@@ -158,6 +161,7 @@ body>div>div>section{
 }
 
 .paginacion {
+	position:relative;
     display: inline-block;
     float: right;
 }
@@ -204,13 +208,25 @@ body>div>div>section{
 .receta > section {
 	width: 300px;
 	height: 400px;
-	transition: 0s;
+	transition: 0.5s ease-out;
 }
 
 .receta > section:hover {
 	transition-property: none;
-	background-color: #ffded1;
+	background-color: #ffd3c4;
+ 	color: #a56666;
+ 	transition: 0.5s ease;
 }
+
+/*RECETA COMENTARIOS*/
+div>figure>p{
+	margin: auto;
+	width: 80%;
+    border-radius: 5px;
+	background-color: #FFEEE7;
+    padding: 20px;
+}
+
 
 /*CUERPO FORMULARIOS*/
 
@@ -226,6 +242,52 @@ input[type=text], select, [type=password], [type=email], [type=date] {
     border: 1px solid #6d3e3e;
     border-radius: 4px;
     box-sizing: border-box;
+    transition: 1s ease-out;
+}
+
+input[type=button]{
+	width: 50%;
+	background-color: #c5f9f9;
+	color: #845B5B;
+	text-transform: capitalize;
+	font-weight: bold;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.7s ease-out;
+}
+.inputfile{
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.inputfile + label{
+	float:right;
+	width: 50%;
+	background-color: #c5f9f9;
+	color: #845B5B;
+	text-transform: capitalize;
+	font-weight: bold;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.7s ease-out;
+}
+.inputfile:focus + label,
+.inputfile + label:hover {
+    text-transform: capitalize;
+    background-color: #FFEEE7;
+    color:#FF8B94;
+	font-weight: bold;
+	transition: 0.7s ease;
 }
 
 input[type=number] {
@@ -236,6 +298,7 @@ input[type=number] {
     border: 1px solid #6d3e3e;
     border-radius: 4px;
     box-sizing: border-box;
+    transition: 1s ease-out;
 }
 
 textarea{
@@ -246,6 +309,7 @@ textarea{
 	border: 1px solid #6d3e3e;
 	border-radius: 4px;
 	box-sizing: border-box;
+	transition: 1s ease-out;
 }
 
 input[type=submit] {
@@ -259,6 +323,7 @@ input[type=submit] {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    transition: 0.7s ease-out;
 }
 
 input[type=submit]:hover {
@@ -266,6 +331,34 @@ input[type=submit]:hover {
     background-color: #FFEEE7;
     color:#FF8B94;
 	font-weight: bold;
+	transition: 0.7s ease;
+}
+select:hover{
+background-color: #ffbda3;
+	color: #845B5B;
+	transition: 0.7s ease;
+}
+select:focus{
+	background-color: #c5f9f9;
+	color: #845B5B;
+}
+textarea:hover{
+background-color: #ffbda3;
+	color: #845B5B;
+	transition: 0.7s ease;
+}
+textarea:focus{
+	background-color: #c5f9f9;
+	color: #845B5B;
+}
+input:hover{
+	background-color: #ffbda3;
+	color: #845B5B;
+	transition: 0.7s ease;
+
+}input:focus { 
+   background-color: #c5f9f9;
+	color: #845B5B;
 }
 
 div.formulario {
@@ -274,8 +367,52 @@ div.formulario {
     border-radius: 5px;
 	background-color: #FFEEE7;
     padding: 20px;
+    box-shadow: 5px 10px rgba(156, 125, 126, 0.3);
+}
+.likes{
+	margin: auto;
+	width: 50%;
+    border-radius: 5px;
+	background-color: #FFEEE7;
+    padding: 20px;
+    
 }
 
+
+
+div.formulario>form{
+	margin: auto;
+	width: 80%;
+    border-radius: 5px;
+	background-color: #FFDED1;
+    padding: 20px;
+    box-shadow: 5px 10px rgba(156, 125, 126, 0.3);
+    transition: 0.5s ease-out;
+}
+div.formulario>form:hover {
+	transition-property: none;
+	background-color: #ffd3c4;
+ 	color: #a56666;
+ 	transition: 0.5s ease;
+}
+
+div.formulario>article{
+	margin-top: 6%;
+	margin-bottom: 4%;
+	width: 70%;
+    border-radius: 5px;
+	background-color: #FFD3C4;
+    padding: 2%; 
+     box-shadow: 5px 10px rgba(156, 125, 126, 0.3);
+}
+div.formulario>article>p{
+	margin: auto;
+	padding: 2%;
+	width: 70%;
+    border-radius: 5px;
+	background-color: #fff7f4;
+    padding: 2%:;
+}
 
 /*FORMULARIO INDEX PEQUEÑO*/
 
@@ -311,11 +448,34 @@ div.formulario {
     border-radius: 4px;
     cursor: pointer;
 }
-
+button{
+	width: 7%;
+	background-color: #c5f9f9;
+	color: #845B5B;
+	text-transform: capitalize;
+	font-weight: bold;
+    padding: 8px 0;
+    margin: 0 auto;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.2s ease-out;
+}
+button:active {
+  background-color: #80e5e5;
+  box-shadow: 5px 5px rgba(156, 125, 126, 0.3);
+  transform: translateY(4px);
+}
+button:hover {
+  background-color: #80e5e5;
+  transition: 0.2s ease;
+}
 #formularioIndex > form > input[type=submit]:hover {
 	text-transform: capitalize;
     background-color: #FFEEE7;
     color:#FF8B94;
 	font-weight: bold;
 }
+
+/*prueba rating*/
 
