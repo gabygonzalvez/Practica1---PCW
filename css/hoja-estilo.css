@@ -479,3 +479,197 @@ button:hover {
 
 /*prueba rating*/
 
+/*QUERIES*/
+/*
+*
+*
+*
+*
+*
+*
+*
+*/
+
+@media all and (max-width: 480px) {
+
+		.subtitulo{
+			padding-bottom: 10px;
+		}
+
+
+		.logo{
+			width: 90%;
+		}
+
+
+		/*HEADER, BARRA DE NAVEGACION*/
+
+		div > nav{
+			position:absolute;
+			width:200px;
+			height:100vh;
+			top:0;
+			left:-220px; 
+			position:absolute;
+			padding-top:12px;
+			transition:all .5s ease;
+		}
+
+		.hamburguesa {
+			visibility: visible;
+			position:absolute;
+			width: 35px;
+			line-height:1.1;
+			text-align:center;
+			top: 12px;
+			left: 8px;
+			border-radius:3px;
+			background-color: #c5f9f9;
+			transition:all .5s ease;
+			z-index:10;
+		}
+
+		.hamburguesa::before {
+			content:"☰";
+		    font-size:32px;
+		    color: #845B5B;
+		}
+
+
+		div > nav > ul > li {
+			display: block;
+			width:96%;
+			margin:0 auto;
+			line-height:2;
+			position:relative;
+			border-bottom:.5px solid white;
+			border-top:.5px solid white;
+			text-align:center;
+		}
+
+		div > nav > ul > li a {
+			padding: 0px 0px;
+		}
+
+		div > nav > ul > li:last-child {
+		    float: left;
+		}
+
+
+		.checkbox {
+			display: none;
+		}
+
+		.checkbox:checked ~ nav {
+			left: 0px;
+			position: fixed;
+		}
+
+		.checkbox:checked ~ .hamburguesa {
+			left:208px;
+		    position:fixed;
+		}
+
+		/*CUERPO*/
+
+
+
+		/*CUERPO FORMULARIOS*/
+
+
+		div.formulario {
+			width: 80%;
+		}
+
+
+		/*FORMULARIO INDEX PEQUEÑO*/
+
+
+		#formularioIndex > form{
+			width: 40%;
+		}
+
+
+}
+
+/*
+*
+*
+*
+*
+*/
+
+@media all and (min-width: 481px) and (max-width: 980px) {
+
+
+		#hamburguesa {
+			visibility: hidden;
+		}
+
+		.hamburguesa {
+			visibility: hidden;
+		}
+
+
+		.subtitulo{
+			padding-bottom: 0px;
+		}
+
+
+		.logo{
+			width: 50%;
+		}
+
+
+
+		/*HEADER, BARRA DE NAVEGACION*/
+
+
+		div > nav > ul >li > a>dt{
+			display:none;
+		}
+		/*
+		div > nav > ul > li {
+
+			display: block;
+			float: none;
+			padding-bottom: 5px;
+			color: black;
+		}
+
+
+
+		div > nav > ul > li:last-child {
+			
+			float: none;
+		    border-right: none;
+		}
+
+		div > nav > ul > li a {
+			padding: 0 20px;
+		}
+
+		*/
+
+		/*CUERPO*/
+
+
+
+		/*CUERPO FORMULARIOS*/
+
+		div.formulario {
+			width: 70%;
+		}
+
+
+		/*FORMULARIO INDEX PEQUEÑO*/
+
+		#formularioIndex > form{
+			width: 30%;
+		}
+
+		#formularioIndex > form > input[type=submit] {
+		    width: 50%;
+		}
+
+}
