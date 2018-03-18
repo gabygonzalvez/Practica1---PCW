@@ -177,7 +177,40 @@ body>div>div>section{
     color: #FF8B94;
 }
 
+/*CUERPO PAGINA RECETA*/
 
+.fotoReceta {
+	width: 100%;
+}
+
+.receta > figure > figcaption {
+	text-align: center;
+}
+
+.receta > figure > div {
+	display: inline-block;
+	float: right;
+}
+
+
+.receta {
+	margin: auto;
+	width: 80%;
+    border-radius: 5px;
+	background-color: #FFEEE7;
+    padding: 20px;
+}
+
+.receta > section {
+	width: 300px;
+	height: 400px;
+	transition: 0s;
+}
+
+.receta > section:hover {
+	transition-property: none;
+	background-color: #ffded1;
+}
 
 /*CUERPO FORMULARIOS*/
 
