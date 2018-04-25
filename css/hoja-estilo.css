@@ -9,6 +9,10 @@ body {
 	padding: 0;
 	
 }
+.top{
+	float:right;
+	margin-right: 10%;
+}
 
 #hamburguesa {
 	visibility: hidden;
