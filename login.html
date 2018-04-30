@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link href="font/cake.css" rel="stylesheet">
+    <script src="javita.js"></script>
   </head>
 
   <body>
@@ -46,9 +47,9 @@
 
     
      <div class="formulario">
-        <form action="login.html">
+        <form onsubmit="return hacerlogin();">
             <label for="nombre"> Login: </label>
-            <input id="nombre" type="text" pattern="[a-zA-Z][A-Za-z0-9]" title="Debe EMPEZAR por una LETRA. NO debe contener ESPACIOS EN BLANCO, su LOGITUD debe ser ENTRE 6 Y 20. NO SON VALIDOS CARACTERES ESPECIALES.  " required autofocus/> 
+            <input id="nombre" type="text" pattern="[a-zA-Z][A-Za-z0-9]{5,20}" title="Debe EMPEZAR por una LETRA. NO debe contener ESPACIOS EN BLANCO, su LOGITUD debe ser ENTRE 6 Y 20. NO SON VALIDOS CARACTERES ESPECIALES.  " required autofocus/> 
 
 
             <label for="pass"> Contraseña: </label>
