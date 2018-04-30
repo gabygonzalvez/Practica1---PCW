@@ -1,9 +1,11 @@
 
 
-function hacerlogin(){
+function hacerlogin(frm){
 
 	let url = 'rest/login/',
-	fd= new FormData();
+	fd= new FormData(frm);
+
+
 
 	fd.append('login', 'usuario2');
 	fd.append('pwd', 'usuario2');
