@@ -10,6 +10,8 @@
 		<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 		<link href="font/cake.css" rel="stylesheet">
+				<script src="javita.js"></script>
+
 
 	</head>
 
@@ -27,13 +29,13 @@
 
 		<nav>
       <ul>
-       	<li><a href="index.html" class="icon-food"> Inicio</a></li>
-        <li> <a href="buscar.html" class="icon-search-circled">Buscar</a></li>
-        <li> <a href="login.html" class="icon-user">Inicia sesión</a></li>
-        <li> <a href="registro.html" class="icon-user-plus"> Regístrate</a></li>
-        <li> <a href="logout.html" class="icon-logout">Cerrar sesión</a></li>
-        <li> <a href="nueva-receta.html" class="icon-plus-circled">Nueva receta</a></li>
-        <li> <a href="acerca.html" class="icon-emo-coffee">- Sobre nosotros</a></li>
+        <li ><a href="index.html" class="icon-food active"> Inicio</a></li>
+        <li > <a href="buscar.html" class="icon-search-circled">Buscar</a></li>
+        <li id="login"> <a href="login.html" class="icon-user">Inicia sesión</a></li>
+        <li id="registro"> <a href="registro.html" class="icon-user-plus"> Regístrate</a></li>
+        <li id="logout"></li>
+        <li id="nueva-receta"></li>
+        <li > <a href="acerca.html" class="icon-emo-coffee">- Sobre nosotros</a></li>
       </ul>
     </nav>
 	</div>
@@ -145,4 +147,6 @@
 
 	<!-- /Footer -->
 	</body>
+		<script>barradenav()</script>
+
 </html>

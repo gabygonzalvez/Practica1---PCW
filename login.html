@@ -26,13 +26,13 @@
 
    <nav>
       <ul>
-        <li><a href="index.html" class="icon-food"> Inicio</a></li>
-        <li> <a href="buscar.html" class="icon-search-circled">Buscar</a></li>
-        <li> <a href="login.html" class="icon-user active">Inicia sesión</a></li>
-        <li> <a href="registro.html" class="icon-user-plus"> Regístrate</a></li>
-        <li> <a href="logout.html" class="icon-logout">Cerrar sesión</a></li>
-        <li> <a href="nueva-receta.html" class="icon-plus-circled">Nueva receta</a></li>
-        <li> <a href="acerca.html" class="icon-emo-coffee">- Sobre nosotros</a></li>
+        <li ><a href="index.html" class="icon-food active"> Inicio</a></li>
+        <li > <a href="buscar.html" class="icon-search-circled">Buscar</a></li>
+        <li id="login"> <a href="login.html" class="icon-user">Inicia sesión</a></li>
+        <li id="registro"> <a href="registro.html" class="icon-user-plus"> Regístrate</a></li>
+        <li id="logout"></li>
+        <li id="nueva-receta"></li>
+        <li > <a href="acerca.html" class="icon-emo-coffee">- Sobre nosotros</a></li>
       </ul>
     </nav>
 
@@ -47,13 +47,13 @@
 
     
      <div class="formulario">
-        <form onsubmit="return hacerlogin(this);" id="login">
-            <label for="nombre"> Login: </label>
-            <input id="nombre" type="text" pattern="[a-zA-Z][A-Za-z0-9]{5,20}" title="Debe EMPEZAR por una LETRA. NO debe contener ESPACIOS EN BLANCO, su LOGITUD debe ser ENTRE 6 Y 20. NO SON VALIDOS CARACTERES ESPECIALES.  " required autofocus/> 
+        <form action="index.html" name="login" onsubmit="return hacerlogin();" id="login">
+            <label for="usuario"> Login: </label>
+            <input name="login" id="usuario" type="text" pattern="[a-zA-Z][A-Za-z0-9]{5,20}" title="Debe EMPEZAR por una LETRA. NO debe contener ESPACIOS EN BLANCO, su LOGITUD debe ser ENTRE 6 Y 20. NO SON VALIDOS CARACTERES ESPECIALES.  " required autofocus/> 
 
 
             <label for="pass"> Contraseña: </label>
-            <input type="password" id="pass" pattern="[A-Za-z0-9_-]{7,20}" title="NO puede contener espacios en blanco. UNICAMENTE números, letras (mayusculas o minusculas) y los caracteres - o _. La LONGITUD debe estar entre 8 y 20" required/>
+            <input name="pwd" type="password" id="pass" pattern="[A-Za-z0-9_-]{7,20}" title="NO puede contener espacios en blanco. UNICAMENTE números, letras (mayusculas o minusculas) y los caracteres - o _. La LONGITUD debe estar entre 8 y 20" required/>
 
           <input type="submit" value="Iniciar Sesión">
             <a href="index.html">Volver al inicio</a><br />
@@ -85,4 +85,5 @@
 
   <!-- /Footer -->
   </body>
+  <script>barradenav()</script>
 </html>
