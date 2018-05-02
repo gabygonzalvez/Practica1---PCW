@@ -48,24 +48,24 @@
 
       
      <div class="formulario">
-        <form action="login.html">
+        <form   name="registro"  id="registro" onsubmit="return registramen(this)" >
             <label for="nombreu"> Nombre de usuario: </label>
-            <input id="nombreu" type="text" pattern="[a-zA-Z][A-Za-z0-9]{5,20}" title="Debe EMPEZAR por una LETRA. NO debe contener ESPACIOS EN BLANCO, su LOGITUD debe ser ENTRE 6 Y 20. NO SON VALIDOS CARACTERES ESPECIALES.  " required autofocus> 
+            <input name="login" id="nombreu" type="text" pattern="[a-zA-Z][A-Za-z0-9]{5,20}" title="Debe EMPEZAR por una LETRA. NO debe contener ESPACIOS EN BLANCO, su LOGITUD debe ser ENTRE 6 Y 20. NO SON VALIDOS CARACTERES ESPECIALES.  " required autofocus> 
             <label for="nombre"> Nombre: </label>
-            <input id="nombre" type="text" required > 
+            <input id="nombre" type="text" name="nombre" required > 
 
 
             <label for="pass"> Contraseña: </label>
-            <input type="password" id="pass" pattern="[A-Za-z0-9_-]{7,20}" title="NO puede contener espacios en blanco. UNICAMENTE números, letras (mayusculas o minusculas) y los caracteres - o _. La LONGITUD debe estar entre 8 y 20" required>
+            <input type="password" name="pwd" id="pass" pattern="[A-Za-z0-9_-]{7,20}" title="NO puede contener espacios en blanco. UNICAMENTE números, letras (mayusculas o minusculas) y los caracteres - o _. La LONGITUD debe estar entre 8 y 20" required>
 
             <label for="repass"> Repetir contraseña: </label>
-            <input type="password" id="repass" pattern="[A-Za-z0-9_-]{7,20}" title="NO puede contener espacios en blanco. UNICAMENTE números, letras (mayusculas o minusculas) y los caracteres - o _. La LONGITUD debe estar entre 8 y 20" required>
+            <input type="password" id="repass" pattern="[A-Za-z0-9_-]{7,20}" name="pwd2" title="NO puede contener espacios en blanco. UNICAMENTE números, letras (mayusculas o minusculas) y los caracteres - o _. La LONGITUD debe estar entre 8 y 20" required>
 
             <label for="email"> Email: </label>
-            <input type="email" id="email" required>
+            <input type="email" id="email" name="email" required>
 
             <label for="fechanac"> Fecha de nacimiento: </label>
-            <input type="date" id="fechanac" required>
+            <input type="date" id="fechanac" name="fnac" required>
 
           <input type="submit" value="Registrarse">
           <a href="index.html">Volver al inicio</a>

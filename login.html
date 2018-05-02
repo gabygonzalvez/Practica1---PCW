@@ -48,13 +48,14 @@
     
      <div class="formulario">
         <form action="index.html" name="login" onsubmit="return hacerlogin();" id="login">
-            <label for="usuario"> Login: </label>
+            <label for="usuario" id="usuariologin"> Login: </label>
             <input name="login" id="usuario" type="text" pattern="[a-zA-Z][A-Za-z0-9]{5,20}" title="Debe EMPEZAR por una LETRA. NO debe contener ESPACIOS EN BLANCO, su LOGITUD debe ser ENTRE 6 Y 20. NO SON VALIDOS CARACTERES ESPECIALES.  " required autofocus/> 
 
 
             <label for="pass"> Contraseña: </label>
             <input name="pwd" type="password" id="pass" pattern="[A-Za-z0-9_-]{7,20}" title="NO puede contener espacios en blanco. UNICAMENTE números, letras (mayusculas o minusculas) y los caracteres - o _. La LONGITUD debe estar entre 8 y 20" required/>
 
+             <p id="alerta"></p>
           <input type="submit" value="Iniciar Sesión">
             <a href="index.html">Volver al inicio</a><br />
             <a href="registro.html">Registrarse</a>
@@ -86,4 +87,13 @@
   <!-- /Footer -->
   </body>
   <script>barradenav()</script>
+  
+  <div id="openModal" class="modalDialog">
+  <div>
+    <a href="#close" title="Close" class="close">X</a>
+    <h2>ERROR</h2>
+    
+    <p>Los datos introducidos no se encuentran en la base de datos.</p>
+  </div>
+</div>
 </html>
