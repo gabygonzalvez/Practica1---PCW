@@ -294,6 +294,40 @@ input[type=button]{
 	transition: 0.7s ease;
 }
 
+
+#newpic{
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.newpic + label{
+	float:right;
+	width: 50%;
+	background-color: #c5f9f9;
+	color: #845B5B;
+	text-transform: capitalize;
+	font-weight: bold;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.7s ease-out;
+}
+.newpic:focus + label,
+.newpic + label:hover {
+    text-transform: capitalize;
+    background-color: #FFEEE7;
+    color:#FF8B94;
+	font-weight: bold;
+	transition: 0.7s ease;
+}
+
+
 input[type=number] {
 	width: 20%;
 	padding: 12px 20px;
@@ -599,7 +633,7 @@ button:hover {
 
 .modalDialog {
 	position: fixed;
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: 'Montserrat', sans-serif;
 	top: 0;
 	right: 0;
 	bottom: 0;
@@ -622,12 +656,9 @@ button:hover {
 	margin: 10% auto;
 	padding: 5px 20px 13px 20px;
 	border-radius: 10px;
-	background: #fff;
-	background: -moz-linear-gradient(#fff, #999);
-	background: -webkit-linear-gradient(#fff, #999);
-	background: -o-linear-gradient(#fff, #999);
-  -webkit-transition: opacity 400ms ease-in;
--moz-transition: opacity 400ms ease-in;
+	background: #C5F9F9;
+	
+ 
 transition: opacity 400ms ease-in;
 }
 .close {

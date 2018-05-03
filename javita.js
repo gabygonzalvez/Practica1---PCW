@@ -57,11 +57,86 @@ function hacerlogin(){
 	return false;
 }
 
+
+function compruebo(){
+
+	if(sessionStorage.getItem("usuario")){
+		console.log("perfe");
+	}
+	else{
+	
+		location.href="index.html";
+		
+		console.log("perfeno");
+
+	}
+}
+
+ function loadFile(event) {
+    var output = document.getElementById('output');
+    output.src = URL.createObjectURL(event.target.files[0]);
+  }
+ function deletew(event){
+ 	document.getElementById("nuevasfotos").innerHTML="";
+ 	return false;
+ }
+
+
+
+function menufotos(){
+	document.getElementById("nuevasfotos").innerHTML+='<br><br><br><br><h5> Formulario de imagen </h5><img id="output" src="img/noimg.jpg" class="fotoReceta" alt="imagen"><br><label for="descri1">Descripción de la imagen: </label><textarea id="descri1" placeholder="Indique una breve descripción de la imagen" maxlength="250" required></textarea><input type="button" value="Eliminar ficha"  onClick="deletew(event)"><input type="file" id="fotoesc" accept="image/*" onchange="loadFile(event)" class="inputfile" ><label for="fotoesc">introducir imagen</label><br><br>'
+}
+
+
+function ingredientes(){
+	console.log("joder");
+	document.getElementById("ingrediente").innerHTML += "<li>" + document.getElementById("newingrediente").value + "</li>";
+    document.getElementById("newingrediente").value="";
+  }
+function cargarimagen(){
+	var nuevafoto = new Image();
+	alert("cargamos la pic");
+	nuevafoto = cargarfoti("ejemplo.png");
+
+}
+function cargarfoti(){
+ var imagen =new Image();
+ imagen.onload = imagenCargada;
+ imagen.src=url;
+ return imagen;
+}
+
+function imagenCargada(){
+	console.log("no funsiona");
+}
+
+/*
+function comprobadorsesion(){
+	if(sessionStorage.getItem("usuario")){
+		location.href='index.html';
+		console.log("NO PUEDES ENTRAR")
+	}
+}*/
+
 function registramen(formulario){
 console.log("hace cosas llega aqui");
 let url = './rest/usuario/';
 let value= new FormData(formulario);
-	
+
+var x=1
+var comprobacion=false;
+
+for(var valor of value.values()){
+	if(x==2){
+		pwd=valor;
+	}
+	if(x==3){
+		pwd2=valor;
+	}
+	x++;
+}
+if(pwd==pwd2){
+	comprobacion=true;
 fetch(url, {'method':'POST', 'body':value}).then(function(respuesta){
 		
 		if(!respuesta.ok){
@@ -74,7 +149,6 @@ fetch(url, {'method':'POST', 'body':value}).then(function(respuesta){
 		else{
 			respuesta.json().then(function(datos){
 				console.log(datos);
-				
 				location.href='login.html';
 			});
 		}
@@ -83,7 +157,15 @@ fetch(url, {'method':'POST', 'body':value}).then(function(respuesta){
 	});
 	
 	return false;
+
 }
+else{
+		console.log("La contraseña esta mal, escribela de nuevo");
+		location.href='#openModal';
+}
+}
+
+
 
 
 	function barradenav() {

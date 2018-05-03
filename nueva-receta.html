@@ -14,7 +14,8 @@
 
   </head>
 
-  <body>
+  <body >
+    <script> </script>
 
   <!-- Header -->
 
@@ -49,7 +50,7 @@
     
       
      <div class="formulario">
-        <form action="receta.html" id=formulario>
+        <form name="nuevareceta" id=formulario onsubmit="return nuevarecetilla(this)">
           <section>
             <label for="nombrerec"> Nombre de la receta: </label>
             <input id="nombrerec" type="text" maxlength="200" required autofocus> 
@@ -60,15 +61,15 @@
 
            <section>
             <label for="com"> Número de comensales: </label>
-            <input type="text" id="com" required>
+            <input type="text" id="com" name="comensales" required>
           </section>
 
           <section>
             <label for="dificult"> Dificultad: </label>
-            <select id="dificult" required>
-              <option value="">Baja</option>
-              <option value="">Media</option>
-              <option value="">Alta</option>
+            <select id="dificult" name="dificultad" required>
+              <option value="0">Baja</option>
+              <option value="1">Media</option>
+              <option value="2">Alta</option>
             </select>
           </section>
 
@@ -86,12 +87,13 @@
          
          <section>
           <strong>Lista de ingredientes: </strong>
-          <ul contenteditable="true" style="list-style-type:disc">
-            <li> Añadir ingredientes  </li>
+          <ul contenteditable="true"   style="list-style-type:disc">
+            <li > Sal  </li>
+            <li id="ingrediente"> azucar </li>
             
           </ul>
-          <label for="nuevoing"> Otro ingrediente: </label><input type="text" id="nuevoing">
-          <input type="button" value="Añadir ingrediente">
+          <label for="nuevoing"> Otro ingrediente: </label><input type="text" id="newingrediente" >
+          <input type="button" id="nuevo" onclick="ingredientes()" value="Añadir ingrediente">
         </section><br><br>
 
 
@@ -101,21 +103,12 @@
         
               <h4> <strong>FOTOS ASOCIADAS </strong></h4>
                  
+                <input type="button" value="Añadir una foto nueva" id="meterfotos" onclick="return menufotos()"> </input><br><br>
                 
-                 <h5> Imagen 1 </h5>
-                 <img src="img/batidos.jpeg" class="fotoReceta" alt="batidos"><br>
-                 <label for="descri1">Descripción de la imagen: </label>
-                 <textarea id="descri1" placeholder="Indique una breve descripción de la imagen" maxlength="250" required></textarea>
-                  <input type="button" value="Eliminar foto del formulario">
-
-                  <h5> Imagen 2 </h5>
-                 <img src="img/pancakes.jpg" class="fotoReceta" alt="pancakes"><br>
-                 <label for="descri2">Descripción de la imagen: </label>
-                 <textarea id="descri2" placeholder="Indique una breve descripción de la imagen" maxlength="250" required></textarea>
-                  <input type="button" value="Eliminar foto del formulario"><br><br>
-                  <input type="file" id="fotoesc" accept="image/*" class="inputfile"><label for="fotoesc"> Añadir una foto nueva</label><br><br>
-
-                  </section><br><br>
+                
+                 <section id="nuevasfotos">
+                 
+                  </section><br><br><br>
             <a href="index.html">Volver al inicio</a>
           <input type="submit" value="Añadir receta">
 
@@ -145,4 +138,5 @@
   <!-- /Footer -->
   </body>
   <script>barradenav()</script>
+  <script>compruebo()</script>
 </html>
