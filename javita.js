@@ -17,7 +17,7 @@ function peticionFetchAPI_POST(form_HTML, clave){
 	});
 }*/
 
-
+/*------- FUNCIONES RELACIONADAS CON HACER LOGIN -------*/
 
 function hacerlogin(){
 
@@ -57,6 +57,23 @@ function hacerlogin(){
 	return false;
 }
 
+
+function barradenav() {
+	if(sessionStorage.getItem("usuario")){
+		document.getElementById('nueva-receta').innerHTML = '<li > <a href="nueva-receta.html"class="icon-plus-circled" >Nueva receta</a></li>' //muestra nueva_receta
+        document.getElementById('logout').innerHTML = '<li > <a href="index.html" onclick="vaciar()" id="logout" class="icon-logout">Cerrar sesión </a></li>'; // Muestra el logout
+        document.getElementById('login').innerHTML = ''; // Oculta el login
+		document.getElementById('registro').innerHTML = ''; // Oculta registro
+
+	}
+}
+
+function vaciar(){
+	sessionStorage.clear();
+}
+
+
+/*------- FUNCIONES RELACIONADAS CON NUEVA RECETA -------*/
 
 function compruebo(){
 
@@ -118,38 +135,84 @@ function comprobadorsesion(){
 	}
 }*/
 
+/*------- FUNCIONES RELACIONADAS CON REGISTRO -------*/
+
 function registramen(formulario){
-console.log("hace cosas llega aqui");
-let url = './rest/usuario/';
-let value= new FormData(formulario);
+	console.log("hace cosas llega aqui");
+	let url = './rest/usuario/';
+	let value= new FormData(formulario);
 
-var x=1
-var comprobacion=false;
+	var x=1
+	var comprobacion=false;
 
-for(var valor of value.values()){
-	if(x==2){
-		pwd=valor;
+	for(var valor of value.values()){
+		if(x==2){
+			pwd=valor;
+		}
+		if(x==3){
+			pwd2=valor;
+		}
+		x++;
 	}
-	if(x==3){
-		pwd2=valor;
+	if(pwd==pwd2){
+		comprobacion=true;
+	fetch(url, {'method':'POST', 'body':value}).then(function(respuesta){
+			
+			if(!respuesta.ok){
+				//respuesta.json().then(function(datos){
+				respuesta.json().then(function(datos){
+					console.log(datos);
+					
+				})
+			}
+			else{
+				respuesta.json().then(function(datos){
+					console.log(datos);
+					location.href='login.html';
+				});
+			}
+		}, function(respuesta){
+			console.log('NO HA HECHO EL FECH');
+		});
+		
+		return false;
+
 	}
-	x++;
+	else{
+			console.log("La contraseña esta mal, escribela de nuevo");
+			location.href='#openModal';
+	}
 }
-if(pwd==pwd2){
-	comprobacion=true;
-fetch(url, {'method':'POST', 'body':value}).then(function(respuesta){
+
+/*------- FUNCIONES RELACIONADAS CON BUSQUEDA RAPIDA -------*/
+
+/*function redirecBuscar(formulario) {
+
+	busquedaRapida(formulario);
+	location.href='buscar.html';
+
+}*/
+
+function busquedita(formulario) {
+
+
+	let url = 'rest/receta/?t={texto1,texto2,...}';
+	let value = new FormData(formulario);
+
+
+		fetch(url, {'method':'GET', 'body':value}).then(function(respuesta){
 		
 		if(!respuesta.ok){
-			//respuesta.json().then(function(datos){
-			respuesta.json().then(function(datos){
-				console.log(datos);
-				
-			})
-		}
+
+			console.log('No se encuentran datos');
+			
+			}
 		else{
-			respuesta.json().then(function(datos){
+				respuesta.json().then(function(datos){
 				console.log(datos);
-				location.href='login.html';
+				location.href='buscar.html';
+
+				
 			});
 		}
 	}, function(respuesta){
@@ -159,30 +222,18 @@ fetch(url, {'method':'POST', 'body':value}).then(function(respuesta){
 	return false;
 
 }
-else{
-		console.log("La contraseña esta mal, escribela de nuevo");
-		location.href='#openModal';
-}
-}
 
 
-
-
-	function barradenav() {
-		if(sessionStorage.getItem("usuario")){
-			document.getElementById('nueva-receta').innerHTML = '<li > <a href="nueva-receta.html"class="icon-plus-circled" >Nueva receta</a></li>' //muestra nueva_receta
-            document.getElementById('logout').innerHTML = '<li > <a href="index.html" onclick="vaciar()" id="logout" class="icon-logout">Cerrar sesión </a></li>'; // Muestra el logout
-            document.getElementById('login').innerHTML = ''; // Oculta el login
-			document.getElementById('registro').innerHTML = ''; // Oculta registro
-
-		}
-	}
-
-	function vaciar(){
-		sessionStorage.clear();
-	}
 
 
 	
-	
+/*------- FUNCIONES RELACIONADAS CON RECETA -------*/
 
+
+function cargarReceta() {
+	if(window.location.search){
+
+		console.log(location.search);
+		let url = 'rest/receta/'
+	}
+}
