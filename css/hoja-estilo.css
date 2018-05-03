@@ -262,6 +262,20 @@ input[type=button]{
     cursor: pointer;
     transition: 0.7s ease-out;
 }
+
+.button{
+	width: 50%;
+	background-color: #c5f9f9;
+	color: #845B5B;
+	text-transform: capitalize;
+	font-weight: bold;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.7s ease-out;
+}
 .inputfile{
 	width: 0.1px;
 	height: 0.1px;
@@ -617,6 +631,14 @@ button:hover {
 
 		div.formulario {
 			width: 80%;
+		}
+		div.nuevasfotos {
+			margin: 0 3%;
+			padding: 0 5%;
+			align-items: center;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
 		}
 
 

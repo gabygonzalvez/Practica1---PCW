@@ -17,6 +17,34 @@ function peticionFetchAPI_POST(form_HTML, clave){
 	});
 }*/
 
+/*FUNCION DE LAS SEIS ULTIMAS RECETAS*/
+
+/*function pedirEntradas(){
+    let xht=XMLHttpRquest(),
+    url='rest/receta/?u=6';
+
+    xhr.open('GET',url, true);
+    xhr.onload= function(){
+        let objJSON= JSON.parse(xhr.responseText);
+        console.log(objJSON);
+        document.querySelector('#recetas').innerHTML=xhr.responseText;
+        document.querySelector('#recetas').innerHTML='<ul>';
+        objJSON.FILAS.forEach(e => {
+            document.querySelector('#recetas').innerHTML+='<li>'${e.nombre}'</li>';
+        });
+    };
+
+    xhr.onerror= funtion(){
+        console.log('error')
+    };
+
+    xhr.send();
+}*/
+
+
+
+
+
 /*------- FUNCIONES RELACIONADAS CON HACER LOGIN -------*/
 
 function hacerlogin(){
@@ -89,21 +117,41 @@ function compruebo(){
 	}
 }
 
- function loadFile(event) {
-    var output = document.getElementById('output');
-    output.src = URL.createObjectURL(event.target.files[0]);
+
+function coments(){
+
+	if(!sessionStorage.getItem("usuario")){
+		document.getElementById("comenta").innerHTML='<p> Para poder escribir un comentario debes estar <a href="login.html">logueado</a></p>'
+	}
+	else{
+	
+		
+	}
+}
+
+ function loadfile(event, formulario) {
+ 	let idraro = formulario.children;
+    var foto = document.getElementById(idraro[0].id);
+    var tamanyo=300*1024;
+    foto.src = URL.createObjectURL(event.target.files[0]);
+ 
   }
- function deletew(event){
- 	document.getElementById("nuevasfotos").innerHTML="";
+
+ function eliminar(id){
+ 	document.getElementById(id).innerHTML='';
  	return false;
  }
 
-
-
+ var contador=1;
 function menufotos(){
-	document.getElementById("nuevasfotos").innerHTML+='<br><br><br><br><h5> Formulario de imagen </h5><img id="output" src="img/noimg.jpg" class="fotoReceta" alt="imagen"><br><label for="descri1">Descripción de la imagen: </label><textarea id="descri1" placeholder="Indique una breve descripción de la imagen" maxlength="250" required></textarea><input type="button" value="Eliminar ficha"  onClick="deletew(event)"><input type="file" id="fotoesc" accept="image/*" onchange="loadFile(event)" class="inputfile" ><label for="fotoesc">introducir imagen</label><br><br>'
+	document.getElementById("nuevasfotos").innerHTML+='<div id="fichero' + contador + '"  onchange="loadfile(event,this)" ><img id="foto' + contador + '" src="img/noimg.jpg" onclick="maria();" class="fotoReceta" alt="imagen"  required><textarea rows="4" cols="50" placeholder="Escriba una breve descripción de la imagen" required></textarea><br><input type="file"  id="archivo" class="button" name="file" accept="image/*"><br><button onclick="return eliminar(parentElement.id)" class="button">Eliminar</button><br></div>'
+	contador++;
+	return false;
 }
 
+function maria(){
+	document.getElementById('archivo').click();
+}
 
 function ingredientes(){
 	console.log("joder");
