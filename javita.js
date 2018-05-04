@@ -241,37 +241,77 @@ function registramen(formulario){
 
 }*/
 
-function busquedita(formulario) {
+function busquedita() {
+
+	console.log('hola1');
+
+	let parametros = getParameterByName('buscar');
+	var url = 'rest/receta/?t=' + parametros;
 
 
-	let url = 'rest/receta/?t={texto1,texto2,...}';
-	let value = new FormData(formulario);
-
-
-		fetch(url, {'method':'GET', 'body':value}).then(function(respuesta){
-		
-		if(!respuesta.ok){
-
-			console.log('No se encuentran datos');
-			
-			}
-		else{
-				respuesta.json().then(function(datos){
-				console.log(datos);
-				location.href='buscar.html';
-
-				
-			});
-		}
-	}, function(respuesta){
-		console.log('NO HA HECHO EL FECH');
-	});
+	mostrarRecetas(url);
 	
-	return false;
 
 }
 
+function getParameterByName(name) {
 
+		console.log('hola2');
+
+
+	name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+	let href = location.search;
+	var regexS = "[\\?&]"+name+"=([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(href);
+
+	if( results == null )
+		return "";
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+function mostrarRecetas(url) {
+	console.log('hola');
+
+	fetch(url).then(function(respuesta){
+                if(!respuesta.ok){
+                    console.log('Error(' + respuesta.status + '): ' + respuesta.statusText);
+                    return;
+                }
+                else {
+                		console.log('holaaaaaaa');
+                	respuesta.json().then(function(datos){
+                    var elemento;
+                    localStorage.setItem("n_resultados", datos.TOTAL_COINCIDENCIAS);
+                    console.log("storage mostrar: " + localStorage.getItem("n_resultados"));
+                    elemento = document.getElementById("contenidoIndex");
+                    if (elemento) {
+                        for( let i = 0 ; i < datos.FILAS.length; i++){
+                            var receta = datos.FILAS[i];
+                            elemento.innerHTML = elemento.innerHTML +
+                     
+                    	'<section>' +
+						'<h4><a href="receta.html?id=' + receta.id + '" class="tituloHome"> ' + receta.nombre + '</a></h4>' +
+						'<a href="receta.html?id=' + receta.id + '"><img src="fotos/ ' + receta.fichero + '" class="fotoHome" alt="' + receta.descripcion_foto + '"></a>' +
+						'<ul>'
+						'<li><b><a href="buscar.html?id=' + receta.autor + '">Autor: </a></b> '+ receta.autor +' </li>' +
+						'<li><b>Likes</b> '+ receta.positivos +' </li>'+
+						'<li><b>Dislikes</b> '+ receta.negativos +' </li>'+
+						'<li><b>Fecha</b> '+ receta.fecha +' </li>'+
+						'</ul>'+
+						'</section>;'
+                        }
+                    }
+
+                    
+                });
+
+                }
+            }, function(respuesta){
+			console.log('NO HA HECHO EL FECH');
+			 });
+}
 
 
 	
