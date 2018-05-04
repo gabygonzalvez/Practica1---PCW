@@ -244,9 +244,9 @@ function registramen(formulario){
 
 
 
-function busquedita(){
+/*function busquedita(){
 	console.log("entra a busquedita obvizmente");
-  var url = 'rest/receta/?t='; 
+  	var url = 'rest/receta/?t='; 
 	
 	console.log(url);
 	var urlfin=document.getElementById("buscar").value;
@@ -254,7 +254,7 @@ function busquedita(){
 	console.log(urlllevar);
 	location.href=urlllevar;
 
-  /*fetch(url).then(function(response){
+  fetch(url).then(function(response){
     if(!response.ok){ // if(response.status!=200)
     		console.log("SALE UN ERROR estoy enfadada");
 
@@ -269,18 +269,46 @@ function busquedita(){
   });
   }).catch(function(errorcito) {
     console.log('Fetch Error: ', errorcito);
-  });*/
+  });
+}*/
+
+function mandarBusqueda() {
+
+	var param = document.getElementById("buscar").value;
+
+	window.location.replace('./buscar.html?buscar='+ param);
+	
+}
+
+function busquedita() {
+
+
+	var parametros = window.location.href.split("=")[1];
+
+	console.log(parametros);
+
+	if(parametros===' '){
+		// cargar las ultimas 6 igual que cargar index
+	}
+	else {
+		// hacer peticion fetch get con la siguiente url
+		var url = 'rest/receta/?t=' + parametros;
+	}
+
+
+
 }
 
 
+
+
+
+
+
 /*
-function busquedita() {
-
-	console.log('hola1');
-
-	var parametros = getParameterByName('buscar');
-	var url = 'rest/receta/?t=' + parametros;
-	var param='?buscar=' + parametros;
+	var url = './buscar.html?buscar=' + parametros;
+	var parametros = getParameterByNam('buscar');
+	/*var param='?buscar=' + parametros;
 	console.log('hola3');
 
 	console.log(url);
@@ -288,10 +316,10 @@ function busquedita() {
 
 	mostrarRecetas(url);
 	
+}*/
 
-}
+/*function getParameterByName(name) {
 
-function getParameterByName(name) {
 	console.log('hola2');
 	name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
 	let href = window.location;
@@ -306,7 +334,7 @@ function getParameterByName(name) {
 	var regex=new RegExp("[\\?&]" + name + "=([^&#]*)"),
 	results = regex.exec(location.search);
 	return results===null ? "": decodeURIComponent(results[1].replace(/\+/g, " "));
-}
+}*/
 
 function mostrarRecetas(url) {
 	console.log('hola');
@@ -348,7 +376,7 @@ function mostrarRecetas(url) {
 
                 
             }); console.log("mal");
-}*/
+}
 
 
 	
