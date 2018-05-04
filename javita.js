@@ -241,12 +241,49 @@ function registramen(formulario){
 
 }*/
 
+
+
+
+function busquedita(){
+	console.log("entra a busquedita obvizmente");
+  var url = 'rest/receta/?t='; 
+	
+	console.log(url);
+	var urlfin=document.getElementById("buscar").value;
+	urlllevar='buscar.html/u?=' + urlfin;
+	console.log(urlllevar);
+	location.href=urlllevar;
+
+  /*fetch(url).then(function(response){
+    if(!response.ok){ // if(response.status!=200)
+    		console.log("SALE UN ERROR estoy enfadada");
+
+      console.log('Error(' + response.status + '): ' + response.statusText);
+      return;
+    }
+    	console.log("AQUI NO SALE ERROR ira no seeeeeeeeeeee");
+
+    response.json().then(function(data) { 
+    console.log(data); 
+
+  });
+  }).catch(function(errorcito) {
+    console.log('Fetch Error: ', errorcito);
+  });*/
+}
+
+
+/*
 function busquedita() {
 
 	console.log('hola1');
 
-	let parametros = getParameterByName('buscar');
+	var parametros = getParameterByName('buscar');
 	var url = 'rest/receta/?t=' + parametros;
+	var param='?buscar=' + parametros;
+	console.log('hola3');
+
+	console.log(url);
 
 
 	mostrarRecetas(url);
@@ -255,12 +292,9 @@ function busquedita() {
 }
 
 function getParameterByName(name) {
-
-		console.log('hola2');
-
-
+	console.log('hola2');
 	name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
-	let href = location.search;
+	let href = window.location;
 	var regexS = "[\\?&]"+name+"=([^&#]*)";
 	var regex = new RegExp(regexS);
 	var results = regex.exec(href);
@@ -269,6 +303,9 @@ function getParameterByName(name) {
 		return "";
 	else
 		return decodeURIComponent(results[1].replace(/\+/g, " "));
+	var regex=new RegExp("[\\?&]" + name + "=([^&#]*)"),
+	results = regex.exec(location.search);
+	return results===null ? "": decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
 function mostrarRecetas(url) {
@@ -279,7 +316,9 @@ function mostrarRecetas(url) {
                     console.log('Error(' + respuesta.status + '): ' + respuesta.statusText);
                     return;
                 }
-                else {
+                
+                	console.log("ENTRA Y LO HACE BIEN");
+                	location.href="buscar.html";
                 		console.log('holaaaaaaa');
                 	respuesta.json().then(function(datos){
                     var elemento;
@@ -307,11 +346,9 @@ function mostrarRecetas(url) {
                     
                 });
 
-                }
-            }, function(respuesta){
-			console.log('NO HA HECHO EL FECH');
-			 });
-}
+                
+            }); console.log("mal");
+}*/
 
 
 	
