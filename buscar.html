@@ -13,7 +13,7 @@
 		<script src="javita.js"></script>
 	</head>
 
-	<body onload="busquedita(); return false;">
+	<body onload="busquedita(); busqueda(); return false;">
 
 	<!-- Header -->
 
@@ -48,7 +48,7 @@
 		<h2 class="formulario">Búsqueda</h2>
 
 		<div class="formulario">
-			 <form action="resultado.html">
+			 <form action="resultado.html" id="formB">
 
 				<label for="nombre">Nombre</label>
 				<input class="formulario" type="text" id="nombre" placeholder="Nombre de receta..." autofocus/>
@@ -77,6 +77,7 @@
 				<label for="autor">Autor</label>
 				<input type="text" id="autor" placeholder="Nombre de autor...">
 
+				<input type="button" value="Limpiar" onclick="limpiarBusqueda();"/>
 				<input type="submit" value="Buscar"/>
 	        </form>
         </div>

@@ -194,8 +194,18 @@ function registramen(formulario){
 	}
 }
 
-/*------- FUNCIONES RELACIONADAS CON BUSQUEDA RAPIDA -------*/
+/*------- FUNCIONES RELACIONADAS CON BUSQUEDA -------*/
 
+function limpiarBusqueda(){
+
+		document.getElementById('formB').reset();
+
+}
+
+function busqueda(){
+
+
+}
 
 /*function busquedita(){
 	console.log("entra a busquedita obvizmente");
@@ -437,14 +447,14 @@ function nuevarecetasubida(){
     }}, function(response){
         console.log('emmmm');
     });
-        
+
 
     return false;
  }
 
  function subidaingredientes(datos, usuario){
  	let xhr = new XMLHttpRequest(),
- 	url = 'rest/receta/' + datos + '/ingredientes', 
+ 	url = 'rest/receta/' + datos + '/ingredientes',
  	valor = new FormData();
  	lista = document.getElementsByName('ing');
  	enviarIngredientes=[];
@@ -481,10 +491,22 @@ function nuevarecetasubida(){
 
 
 function subirfoto(id, usuario){
-	let xhr = new XMLHttpRequest(), 
+	let xhr = new XMLHttpRequest(),
 	form = new FormData()
-	url = 'rest/receta/' + id + '/foto', 
-	descripcion = document.getElementById('descripcionfoto')
+	url = 'rest/receta/' + id + '/foto',
+	descripcion= ;
+	foto = document.querySelector('[type="File"]').files[0];
+	console.log(usuario.login);
+	console.log(foto);
+	console.log(descripcion);
+if(xhr){
+	form.append('l', usuario.login);
+	form.append('t', descripcion);
+	form.append('f', document.querySelector('img[id=foto]').src);
+
+	console.log(form);
+}
+
 }
 
 
