@@ -50,10 +50,10 @@
     
       
      <div class="formulario">
-        <form name="nuevareceta" id="formulario" onsubmit="return nuevarecetilla(this)">
+        <form name="nuevareceta" id="formulario" >
           <section>
             <label for="nombrerec"> Nombre de la receta: </label>
-            <input id="nombrerec" type="text" maxlength="200" required autofocus> 
+            <input id="nombreReceta" type="text" maxlength="200" required autofocus> 
 
           </section>
 
@@ -61,27 +61,27 @@
 
            <section>
             <label for="com"> Número de comensales: </label>
-            <input type="text" id="com" name="comensales" required>
+            <input type="number" id="comensalesReceta" value="1" min="1" name="comensales" required>
           </section>
 
           <section>
             <label for="dificult"> Dificultad: </label>
-            <select id="dificult" name="dificultad" required>
-              <option value="0">Baja</option>
-              <option value="1">Media</option>
-              <option value="2">Alta</option>
+            <select id="dificult" required>
+              <option  name="dificultad" value="Baja" >Baja</option>
+              <option  name="dificultad" value="Media" >Media</option>
+              <option  name="dificultad" value="Alta" >Alta</option>
             </select>
           </section>
 
            <section>
             <label for="tiem"> Tiempo de elaboración: </label>
-            <input type="number" id="tiem" min="1" max="5" required>
+            <input type="number" id="tiempoReceta" min="1"  required>
             <label for="tiem"> min </label>
           </section>
 
            <section>
             <label for="elaboracion"> Elaboración: </label>
-           <textarea  id="elaboracion" maxlength="200" placeholder="Escribe una breve descripción sobre la receta" required></textarea>
+           <textarea  id="elaboracionReceta" maxlength="200" placeholder="Escribe una breve descripción sobre la receta" required></textarea>
           </section>
           <br><br>
          
@@ -89,7 +89,7 @@
           <strong>Lista de ingredientes: </strong>
           <ul contenteditable="true"   style="list-style-type:disc">
             <li > Sal  </li>
-            <li id="ingrediente"> azucar </li>
+            <li id="ingrediente"> aceite </li>
             
           </ul>
           <label for="nuevoing"> Otro ingrediente: </label><input type="text" id="newingrediente" >
@@ -111,7 +111,7 @@
                       <br><br><br>
                 <a href="index.html">Volver al inicio</a>
              
-               <input type="submit" value="Añadir receta">
+               <input type="submit" value="Añadir receta" onclick="return nuevarecetasubida()">
               </form>
                </div>
             </div>
@@ -139,4 +139,10 @@
   </body>
   <script>barradenav()</script>
   <script>compruebo()</script>
+  <div id="openModal" class="modalDialog">
+    <div>
+      <a href="#close" title="Close" class="close">X</a>
+      <h3> Se ha superado el tamaño máximo del archivo <h3>
+    </div>
+  </div>
 </html>

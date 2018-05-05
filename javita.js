@@ -175,6 +175,60 @@ function imagenCargada(){
 	console.log("no funsiona");
 }
 
+
+function nuevarecetasubida(){
+    let url = './rest/receta/';
+    usuario = JSON.parse(sessionStorage['usuario']);
+    valor = new FormData();
+    var opcion = document.querySelector('select[id=dificult]').value;
+     console.log(opcion);
+    
+    if(opcion =='Baja') {
+	  numero = 0;
+    }else if(opcion =='Media') {
+      numero = 1;
+    }else if(opcion =='Alta') {
+      numero = 2;
+    }
+    console.log(numero);
+
+    valor.append('l', usuario.login);
+    valor.append('n', document.querySelector('input[id=nombreReceta]').value);
+    valor.append('e', document.querySelector('textarea[id=elaboracionReceta]').value);
+    valor.append('t', document.querySelector('input[id=tiempoReceta]').value);
+    valor.append('d', numero);
+    valor.append('c', document.querySelector('input[id=comensalesReceta]').value);
+
+    console.log(usuario.login);
+    console.log(document.querySelector('input[id=nombreReceta]').value);
+    console.log(document.querySelector('textarea[id=elaboracionReceta]').value);
+    console.log(document.querySelector('input[id=tiempoReceta]').value);
+    console.log( numero);
+    console.log(document.querySelector('input[id=comensalesReceta]').value);
+
+
+    fetch(url,{'method':'POST','body':valor, headers:{'Authorization':usuario.clave}}).then(function (response){
+        if(!response.ok){
+            response.json().then(function(datos){
+                console.log(datos);
+                 console.log('deberia NO meerlo')
+            })
+        }
+        else{
+            response.json().then(function(datos){
+                console.log(datos);
+                console.log('deberia meerlo');
+               	//subirIngredientes(datos.ID, usuario);
+        })
+    }}, function(response){
+        console.log('emmmm');
+    });
+        console.log('mira tonto');
+
+    return false;
+ }
+
+
 /*
 function comprobadorsesion(){
 	if(sessionStorage.getItem("usuario")){
