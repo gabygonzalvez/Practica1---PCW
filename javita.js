@@ -358,7 +358,7 @@ function coments(){
 
  var contador=1;
 function menufotos(){
-	document.getElementById("nuevasfotos").innerHTML+='<div id="fichero' + contador + '"  onchange="loadfile(event,this)" ><img id="foto' + contador + '" src="img/noimg.jpg" onclick="maria();" class="fotoReceta" alt="imagen"  required><textarea rows="4" cols="50" placeholder="Escriba una breve descripción de la imagen" required></textarea><br><input type="file"  id="archivo" class="button" name="file" accept="image/*"><br><button onclick="return eliminar(parentElement.id)" class="button">Eliminar</button><br></div>'
+	document.getElementById("nuevasfotos").innerHTML+='<div id="fichero' + contador + '"  onchange="loadfile(event,this)" ><img id="foto' + contador + '" src="img/noimg.jpg" onclick="maria();" class="fotoReceta" alt="imagen"  required><textarea rows="4" cols="50" id="descripcionfoto" placeholder="Escriba una breve descripción de la imagen" required></textarea><br><input type="file"  id="archivo" class="button" name="file" accept="image/*"><br><button onclick="return eliminar(parentElement.id)" class="button">Eliminar</button><br></div>'
 	contador++;
 	return false;
 }
@@ -369,7 +369,7 @@ function maria(){
 
 function ingredientes(){
 	console.log("joder");
-	document.getElementById("ingrediente").innerHTML += "<li>" + document.getElementById("newingrediente").value + "</li>";
+	document.getElementById("ingrediente").innerHTML += "<li name='ing'>" + document.getElementById("newingrediente").value + "</li>";
     document.getElementById("newingrediente").value="";
   }
 function cargarimagen(){
@@ -432,15 +432,60 @@ function nuevarecetasubida(){
             response.json().then(function(datos){
                 console.log(datos);
                 console.log('deberia meerlo');
-               	//subirIngredientes(datos.ID, usuario);
+               	subidaingredientes(datos.ID, usuario);
         })
     }}, function(response){
         console.log('emmmm');
     });
-        console.log('mira tonto');
+        
 
     return false;
  }
+
+ function subidaingredientes(datos, usuario){
+ 	let xhr = new XMLHttpRequest(),
+ 	url = 'rest/receta/' + datos + '/ingredientes', 
+ 	valor = new FormData();
+ 	lista = document.getElementsByName('ing');
+ 	enviarIngredientes=[];
+ 	console.log("ha llegao");
+
+ 	if(xhr){
+ 		for(var i=0; i<lista.length; i++){
+ 			enviarIngredientes.push(lista[i].innerText);
+ 			 	console.log("cosa");
+
+ 		}
+
+ 		valor.append('l', usuario.login);
+ 		valor.append('i', JSON.stringify(enviarIngredientes));
+
+ 		console.log(JSON.stringify(enviarIngredientes));
+
+ 		xhr.open('POST', url, true);
+ 		xhr.onload = function(){
+ 			let response = JSON.parse(xhr.responseText);
+ 			if(response.RESULTADO == "OK"){
+ 				console.log("deberia ir de p madre");
+
+ 			}else{
+ 				console.log("mira no funca");
+ 			}
+ 			console.log("al menos entra al primer if... ");
+ 		};
+
+ 	}
+ 	xhr.setRequestHeader('Authorization', usuario.clave);
+ 	xhr.send(valor);
+ }
+
+
+function subirfoto(id, usuario){
+	let xhr = new XMLHttpRequest(), 
+	form = new FormData()
+	url = 'rest/receta/' + id + '/foto', 
+	descripcion = document.getElementById('descripcionfoto')
+}
 
 
 /*
