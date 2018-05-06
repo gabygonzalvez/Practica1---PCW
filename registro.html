@@ -48,7 +48,7 @@
 
       
      <div class="formulario">
-        <form   name="registro"  id="registro" onsubmit="return registramen(this)" >
+        <form   name="registro"  id="registroy" onsubmit="return registramen(this)" >
             <label for="nombreu"> Nombre de usuario: </label>
             <input name="login" id="nombreu" type="text" pattern="[a-zA-Z][A-Za-z0-9]{5,20}" title="Debe EMPEZAR por una LETRA. NO debe contener ESPACIOS EN BLANCO, su LOGITUD debe ser ENTRE 6 Y 20. NO SON VALIDOS CARACTERES ESPECIALES.  " required autofocus> 
             <label for="nombre"> Nombre: </label>
@@ -93,6 +93,7 @@
   <!-- /Footer -->
   </body>
     <script>barradenav()</script>
+
 <div id="openModal" class="modalDialog">
   <div>
     <a href="#close" title="Close" class="close">X</a>
@@ -101,4 +102,13 @@
     <p>Las contraseñas deben ser iguales.</p>
   </div>
 </div>
+<div id="openModalBIEN" class="ELMODAL">
+  <div>
+    <a href="login.html" title="Close" class="cerrando" >X</a>
+    <h2>CORRECTO</h2>
+    
+    <p>Se ha efectuado el registro correctamente.</p>
+  </div>
+</div>
+<script>comprueboiniciado()</script>
 </html>
