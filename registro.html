@@ -50,7 +50,11 @@
      <div class="formulario">
         <form   name="registro"  id="registroy" onsubmit="return registramen(this)" >
             <label for="nombreu"> Nombre de usuario: </label>
-            <input name="login" id="nombreu" type="text" pattern="[a-zA-Z][A-Za-z0-9]{5,20}" title="Debe EMPEZAR por una LETRA. NO debe contener ESPACIOS EN BLANCO, su LOGITUD debe ser ENTRE 6 Y 20. NO SON VALIDOS CARACTERES ESPECIALES.  " required autofocus> 
+            <input name="login" id="nombreu" type="text"  onkeyup="logindisponible(this)"pattern="[a-zA-Z][A-Za-z0-9]{5,20}" title="Debe EMPEZAR por una LETRA. NO debe contener ESPACIOS EN BLANCO, su LOGITUD debe ser ENTRE 6 Y 20. NO SON VALIDOS CARACTERES ESPECIALES.  " required autofocus> 
+          <p id="disponible"></p>
+          <p id="nodisponible"></p>
+
+
             <label for="nombre"> Nombre: </label>
             <input id="nombre" type="text" name="nombre" required > 
 
@@ -94,7 +98,7 @@
   </body>
     <script>barradenav()</script>
 
-<div id="openModal" class="modalDialog">
+<div id="openModal" class="ELMODAL">
   <div>
     <a href="#close" title="Close" class="close">X</a>
     <h2>ERROR</h2>

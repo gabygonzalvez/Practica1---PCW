@@ -85,6 +85,30 @@ function hacerlogin(){
 	return false;
 }
 
+function logindisponible(nombre){
+let xhr = new XMLHttpRequest();
+  url = 'rest/login/' + nombre.value;
+  xhr.open('GET', url, true);
+
+  xhr.onload = function(){
+    let r = JSON.parse(xhr.responseText);
+    console.log(xhr.responseText);
+
+    if(r.DISPONIBLE==true){
+      document.getElementById("disponible").innerHTML = '¡Nombre de usuario disponible!';
+      document.getElementById("nodisponible").innerHTML = '';
+      console.log('Nombre de usuario disponible');
+    }
+    else{
+      document.getElementById("disponible").innerHTML = '';
+      document.getElementById("nodisponible").innerHTML = 'Nombre de usuario no disponible';
+      console.log('Nombre de usuario no disponible');
+    }
+  }
+  xhr.send();
+
+}
+
 
 function barradenav() {
 	if(sessionStorage.getItem("usuario")){
@@ -339,6 +363,7 @@ function conseguirID(){
   console.log(x);
   console.log(num);
   idActual = num;
+  return num;
 }
 
 function pedirReceta() {   // COGE LA URL Y HACE LA PETICION
@@ -382,43 +407,118 @@ function conversion(numero){
 
 
 //FOTOS DE RECETA
+var contadorart=0;
+var act=0;
+var imag;
+
 
 function anterior(){
 
+console.log(act);
+	console.log(contadorart);
+if(act>0){
+	act-=1;
+	console.log(act);
+	var fotogra = imag[act];
+	console.log(fotogra);
+	let hacerfotos =`<figure><img id="fotografias" src=${"fotos/" + fotogra.fichero}  
+							alt="fotoreceta" class="fotoReceta"><figure>${fotogra.texto} </figure>
+      					<div><input type="button" onclick="anterior()" value="&laquo" >
+      				<input type="button" onclick="siguiente()" value="&raquo" ></div>
+      				`
+
+
+     document.getElementById("aquifotos").innerHTML=hacerfotos;
+}
+else{
+	return false;
+}
+return false;
 
 
 }
 
 
 function siguiente(){
+	console.log(act);
+	console.log(contadorart);
+if(act<contadorart -1){
+	act+=1;
+	console.log(act);
+	var fotogra = imag[act];
+	console.log(fotogra);
+	let hacerfotos =`<figure><img id="fotografias" src=${"fotos/" + fotogra.fichero}  
+							alt="fotoreceta" class="fotoReceta"><figure>${fotogra.texto} </figure>
+      					<div><input type="button" onclick="anterior()" value="&laquo" >
+      				<input type="button" onclick="siguiente()" value="&raquo" ></div>
+      				<article> </article>`
+
+
+     document.getElementById("aquifotos").innerHTML=hacerfotos;
+}
+else{
+	return false;
+}
+return false;
 
 }
 
 
-var contadorart=0;
-function manejofoto(receta){
+function vamosfoto(recetaJSON2){
 
-	imagenes = receta.FILAS;
-	contadorart++;
+	imag = recetaJSON2.FILAS;
+	receta= recetaJSON2.FILAS[0];
+	
+	imag.forEach(function(a, b){
+		contadorart++;
+	});
 
-	let fotos =`<figure><img id="fotografias" src=${"fotos/" + receta.fichero}  
-							alt="fotoreceta" class="fotoReceta">
-      					<figcaption>${receta.nombre}</figcaption><div><input type="button" onclick="anterior()" value="&laquo" >
+	let hacerfotos =`<figure><img id="fotografias" src=${"fotos/" + receta.fichero}  
+							alt="fotoreceta" class="fotoReceta"><figure>${receta.texto} </figure>
+      					<div><input type="button" onclick="anterior()" value="&laquo" >
       				<input type="button" onclick="siguiente()" value="&raquo" ></div>`
 
-return fotos;
+
+     document.getElementById("aquifotos").innerHTML=hacerfotos;
+
+return false;
+
 }
 
-function lareceta(receta){
-	while(recetina.lastChild){         // MIENTRAS HAYA UN ULTIMO HIJO
+
+
+function manejofoto(receta){
+
+	let recetina = document.getElementById('recetina');
+
+	receta.json().then(vamosfoto, function(e){
+		console.log("error json");
+	});
+	return false;
+}
+
+
+function prepararfoto(){
+
+	var ide = conseguirID();
+	console.log("pedirfot" + ide);
+	url="./rest/receta/" + ide + "/fotos";
+
+	console.log(url);
+	fetch(url).then(manejofoto, function(e){
+		console.log("error");
+	});
+	return false;
+
+}
+
+//RECETA TOCHA
+function lareceta(recetaJSON){
+	/*while(recetina.lastChild){         // MIENTRAS HAYA UN ULTIMO HIJO
     recetina.removeChild(recetina.lastChild);   // LO ELIMINA
-  }
-
-  	receta.FILAS.forEach(function(receta, i){
-
-    console.log(i);
-    console.log(idActual);
-    if(i == idActual -1){
+  	}*/
+  var receta=recetaJSON.FILAS[0];
+  	//receta.FILAS.forEach(function(receta, i){
 
     	if(receta.dificultad == 0) {
 		  receta.dificultad = 'Baja';
@@ -426,65 +526,175 @@ function lareceta(receta){
 	      receta.dificultad = 'Media';
 	    }else if(receta.dificultad ==2) {
 	      receta.dificultad = 'Alta';
+	    }else{
+	    	receta.dificultad='Baja';
 	    }
 
-
-
       let recetaficha =`
-      	<h2><a href=${"receta.html?id=" + receta.id}> ${receta.nombre} </a></h2><hr><div class="receta">`
+      	<h2><a href=${"receta.html?id=" + receta.id}> ${receta.nombre} </a></h2><hr><div class="receta"><figcaption>${receta.nombre}</figcaption>`
       	
-      	recetaficha+=manejofoto(receta);
+
+      	recetaficha+= `<article id="aquifotos"> </article>`
 
       	recetaficha+=`
       				<ul>
 					<li><b><a href=${"buscar.html"}>Autor: </a></b>${receta.autor} </li><li><b>Tiempo de elaboración:</b>${receta.tiempo} minutos</li><li ><b>Dificultad: </b> ${receta.dificultad}</li><li><b>Número de comensales:</b> ${receta.comensales}</li><li><b>Likes:</b> ${receta.positivos} </li><li><b>Dislikes:</b> ${receta.negativos} </li><li><b>Fecha:</b> ${receta.fecha}</li><li><b><a href="#comentarios">Número de comentarios:</a></b> ${receta.comentarios} </li>
 				</ul>
-				</figure><section><h4>Ingredientes:</h4><ul>
-					<li>2 cucharadas de manteca derretida</li>
-				</ul></section><h4>Elaboración:</h4>
+				</figure><h4>Ingredientes:</h4><div id ="ingredientesreceta"></div><h4>Elaboración:</h4>
 				<p>${receta.elaboracion}</p> <br>`
+				recetaficha+=`<div class="likes" id="valoracion"> </div>`
+		recetaficha+=`<h4 id="comentarios"> Comentarios: </h4><div id="todoscomentarios"></div>`
 		
-
-        
-        
-        
-      
       let arti = document.createElement('article');
       arti.innerHTML = recetaficha;
       recetina.appendChild(arti);
-    }
-  });
-}
-
-function valoracion(){
-	if(sessionStorage.getItem("usuario")){
-				document.getElementById("valoracion").innerHTML='<div class="likes" id="valoracion" onload="valoracion()""><h3> Me gusta <button onclick="positivo()"> <span class="icon-heart"></span></button></h3> <h3> No me gusta <button><span class="icon-heart-empty"></span></button></h3>'
-			}
-			else{
-				document.getElementById("valoracion").innerHTML='<a href="registro.html"> ¡Regístrate </a> o <a href="login.html"> inicia sesión </a> y así podrás valorar la receta! ';
-			}
-	
-}
-
-function positivo(){
+      prepararfoto();
+      prepararingrediente();
+      prepararcomentarios();
+      //valoracion();
+      coments();
 
 }
+
+//INGREDIENTES//
+function prepararingrediente(){
+	var idingre = conseguirID();
+	url="./rest/receta/" + idingre + "/ingredientes";
+
+	fetch(url).then(creandoingredientes, function(e){
+		console.log("error en el fetch");
+	});
+	return false;
+}
+
+function creandoingredientes(receta){
+
+	let recetinina = document.getElementById('recetinina');
+
+	receta.json().then(mostrarfinalingredientes, function(e){
+		console.log("mal json");
+	});
+return false;
+}
+
+function mostrarfinalingredientes(receta){
+
+	let losingre=`<ul>`;
+receta.FILAS.forEach(function(receta, i){
+	losingre+="<li>" + receta.nombre + "</li>";
+});
+	losingre+="</ul>";
+
+
+	document.getElementById("ingredientesreceta").innerHTML=losingre;
+	return false;
+}
+
+//comentarios//
+function prepararcomentarios(){
+	var idcome = conseguirID();
+	url="./rest/receta/" + idcome + "/comentarios";
+
+	fetch(url).then(creandocomentarios, function(e){
+		console.log("error en el fetch");
+	});
+	return false;
+}
+
+function creandocomentarios(receta){
+
+	let recetinina = document.getElementById('recetinina');
+
+	receta.json().then(mostrarfinalcomentarios, function(e){
+		console.log("mal json");
+	});
+return false;
+}
+
+function mostrarfinalcomentarios(receta){
+
+	let loscoments=`<article>`;
+receta.FILAS.forEach(function(receta, i){
+	loscoments+=`<h3>${receta.titulo}<small><i><small>${receta.autor}-${receta.fecha}</small></i></small></h3>
+	<p>${receta.texto}</p>`;
+});
+	loscoments+="</article>";
+
+
+	document.getElementById("todoscomentarios").innerHTML=loscoments;
+	return false;
+}
+
+
 
 function coments(){
 	if(!sessionStorage.getItem("usuario")){
 		document.getElementById("comenta").innerHTML='<p> Para poder escribir un comentario debes estar <a href="login.html">logueado</a></p>'
 	}
 	else{
-		document.getElementById("comenta").innerHTML='<form id="comenta" onsubmit="return realizarcomentario();"><h3><label for="comentarios">Escribe un comentario</label></h3><input type="text" id="comentarios" placeholder="Título" maxlength="50" required><textarea placeholder="Escribe aquí tu comentario..." required></textarea><input type="submit" value="Enviar comentario" ></form><br>'
+		document.getElementById("comenta").innerHTML='<form id="comenta" onsubmit="return realizarcomentario(this);"><h3><label for="comentarios">Escribe un comentario</label></h3><input type="text" id="titulo" placeholder="Título" maxlength="50" required><textarea id="texto" placeholder="Escribe aquí tu comentario..." required></textarea><input type="submit" value="Enviar comentario" ></form><br>';
 	}
 }
 
 
-function realizarcomentario(){
+function realizarcomentario(aidi){
+ /* let url = './rest/receta/' + aidi + '/comentario';                        // Creamos una URL con la ubicacion de la carpeta
+  let valor = new FormData(aidi);                         // Creamos un contenedor de clave/valor
+
+  fetch(url, {'method':'POST', 'body':valor}).then(function(response){ // Conectar peticion con el servidor: /rest/usuario + info de POST
+    if(!response.ok){ 
+        response.json().then(function(datos){
+          console.log(datos);  
+          console.log("no ha conectao chaval");
+        });
+    }
+    else{ 
+        response.json().then(function(datos){
+          console.log(datos);
+          console.log('fua la mejor');
+        });
+    }
+  }, function(response){ 
+    console.log('fuaaaaaaaaaa');
+  });
+  return false;*/
 
 
+  let id = conseguirID();
+	let xhr = new XMLHttpRequest(),
+		url = 'rest/receta/'+ id +'/comentario/',
+		urlderecarga = 'rest/receta/'+ id,
+		fd = new FormData(aidi),
+		usu = JSON.parse(sessionStorage.getItem('usuario'));
+		
+	if(!sessionStorage.getItem('usuario'))
+		return false;
+
+	fd.append('l', usu.login);
+	fd.append('titulo',  document.querySelector('input[id=titulo]').value);
+	fd.append('texto',  document.querySelector('textarea[id=texto]').value);
+
+
+	xhr.open('POST',url,true);
+	
+	xhr.onload = function()
+	{
+		console.log(xhr.responseText);
+		console.log("ha ocurrido bien");
+		console.log(id);
+		console.log(aidi);
+		location.href="#openModal";
+
+	};
+
+	xhr.setRequestHeader('Authorization', usu.clave);
+	xhr.send(fd);
+
+	return false;
 
 }
+
+
 
 /*------- FUNCIONES RELACIONADAS CON NUEVA RECETA -------*/
 
@@ -558,7 +768,7 @@ function loadfile(source){
 			var foto = document.getElementById("foto" + source.id);
 
 			if(tam>300000){
-				console.log("no deberia entrar juju");
+				location.href="#openModal";
 				//LLAMAR MODAL
 			}else{
 				console.log("entrandito");
@@ -581,7 +791,7 @@ function loadfile(source){
 
 
 function menufotos(){
-	document.getElementById("nuevasfotos").innerHTML+='<div id="fichero' + contador + '"   ><img id="foto' + contador + '" src="img/noimg.jpg" onclick="loadfile(this);" class="fotoReceta" alt="imagen"  required><textarea rows="4" cols="50" id="descripcionfoto' + contador + '" placeholder="Escriba una breve descripción de la imagen" required></textarea><br><input type="file"  id="' + contador + '" class="button" name="file" accept="image/*" onchange="loadfile(this)"><br><button onclick="return eliminar(parentElement)" class="button">Eliminar</button><br></div>'
+	document.getElementById("nuevasfotos").innerHTML+='<div id="fichero' + contador + '"   ><img id="foto' + contador + '" src="img/noimg.jpg" onclick="loadfile(this);" class="fotoReceta" alt="imagen" required><textarea rows="4" cols="50" id="descripcionfoto' + contador + '" placeholder="Escriba una breve descripción de la imagen" required></textarea><br><input type="file"  id="' + contador + '" class="button" name="file" accept="image/*" onchange="loadfile(this)"><br><button onclick="return eliminar(parentElement)" class="button">Eliminar</button><br></div>'
 	contador++;
 	return false;
 }
@@ -615,10 +825,10 @@ function imagenCargada(){
 function subidafoto(id, pos, usuario){
 	let xhr = new XMLHttpRequest(), 
 	form = new FormData(),
-	url = './rest/receta' + id + '/foto', 
+	url = './rest/receta/' + id + '/foto/', 
 	descripcion=document.getElementById('descripcionfoto' + pos).value;
 	foto = document.getElementById(pos).files[0];
-
+	
 	if(xhr){
 		form.append('l', usuario.login);
 		form.append('t', descripcion);
@@ -631,6 +841,7 @@ function subidafoto(id, pos, usuario){
 
 		xhr.open('POST', url, true);
 		xhr.onload = function(){
+			console.log(xhr.responseText);
 			let response = JSON.parse(xhr.responseText);
 				if(response.RESULTADO=="OK"){
 					console.log("FOTO SUBIDA OK")
@@ -658,6 +869,8 @@ function nuevarecetasubida(){
       numero = 1;
     }else if(opcion =='Alta') {
       numero = 2;
+    }else{
+    	numero=0;
     }
     console.log(numero);
 
@@ -674,31 +887,47 @@ function nuevarecetasubida(){
     console.log(document.querySelector('input[id=tiempoReceta]').value);
     console.log( numero);
     console.log(document.querySelector('input[id=comensalesReceta]').value);
-
+    if(usuario.login==''){
+    	location.href="#openmodalusuario";
+    }
+    if(document.getElementById('fichero')==null){
+               		location.href="#openModalerrorFOTO";
+               	}else{
 
     fetch(url,{'method':'POST','body':valor, headers:{'Authorization':usuario.clave}}).then(function (response){
         if(!response.ok){
             response.json().then(function(datos){
                 console.log(datos);
                  console.log('deberia NO meerlo')
+                 location.href="#openModalerror";
             })
         }
         else{
             response.json().then(function(datos){
                 console.log(datos);
                 console.log('deberia meerlo');
-               	subidaingredientes(datos.ID, usuario);
+               	
                	for(var i=0; i<=contador; i++){
                		if(document.getElementById('fichero' + i)!=null){
                			subidafoto(datos.ID, i, usuario);
                		}
                	}
+               	
+               		subidaingredientes(datos.ID, usuario);
+
+               	location.href="#openModalBIENHECHO";
+               	//loadfile("img/noimg.jpg");
+               	document.getElementById("formulario").reset();
+               	
+               	 
+
+               	
         })
     }}, function(response){
         console.log('emmmm');
     });
 
-
+		}
     return false;
  }
 

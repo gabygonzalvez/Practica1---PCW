@@ -53,7 +53,7 @@
         <form name="nuevareceta" id="formulario" >
           <section>
             <label for="nombrerec"> Nombre de la receta: </label>
-            <input id="nombreReceta" type="text" maxlength="200" required autofocus>
+            <input id="nombreReceta" type="text" maxlength="200"  autofocus required>
           </section>
 
            <section>
@@ -136,10 +136,29 @@
   </body>
   <script>barradenav()</script>
   <script>compruebo()</script>
-  <!--<div id="openModal" class="modalDialog">
+  <div id="openModal" class="ELMODAL">
     <div>
       <a href="#close" title="Close" class="close">X</a>
       <h3> Se ha superado el tamaño máximo del archivo <h3>
     </div>
-  </div>-->
+  </div>
+  <div id="openModalBIENHECHO" class="ELMODAL">
+    <div>
+      <a href="#close" title="Close" class="close">X</a>
+      <h3> La receta se ha creado correctamente. Ir a <a href="index.html"> inicio </a> <h3>
+    </div>
+  </div>
+  <div id="openModalerror" class="ELMODAL">
+    <div>
+      <a href="#close" title="Close" class="close">X</a>
+      <h3> Introduzca correctamente los datos, sin dejar el nombre vacío. <h3>
+    </div>
+  </div>
+  
+  <div id="openModalerrorFOTO" class="ELMODAL">
+    <div>
+      <a href="#close" title="Close" class="close">X</a>
+      <h3> Es obligatorio subir al menos una foto <h3>
+    </div>
+  </div>
 </html>
