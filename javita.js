@@ -1,48 +1,3 @@
-/*
-function peticionFetchAPI_POST(form_HTML, clave){
-	var url = 'rest/login/',
-	valor=new FormData(form_HTML),
-	init = {method:'post', body:valor, headers:{'Authorization':clave}};
-
-	fetch(url, init).then(function(respuesta){
-		if(!respuesta.ok){
-			console.log('Error con código: ' + respuesta.status);
-			return;
-		}
-		respuesta.json().then(function(data){
-			console.log('Nombre:' + data.nombre);
-		});
-	}).catch(function(err){
-		console.log('Fetch Error: ', err);
-	});
-}*/
-
-/*FUNCION DE LAS SEIS ULTIMAS RECETAS*/
-
-/*function pedirEntradas(){
-    let xht=XMLHttpRquest(),
-    url='rest/receta/?u=6';
-
-    xhr.open('GET',url, true);
-    xhr.onload= function(){
-        let objJSON= JSON.parse(xhr.responseText);
-        console.log(objJSON);
-        document.querySelector('#recetas').innerHTML=xhr.responseText;
-        document.querySelector('#recetas').innerHTML='<ul>';
-        objJSON.FILAS.forEach(e => {
-            document.querySelector('#recetas').innerHTML+='<li>'${e.nombre}'</li>';
-        });
-    };
-
-    xhr.onerror= funtion(){
-        console.log('error')
-    };
-
-    xhr.send();
-}*/
-
-
-
 
 
 /*------- FUNCIONES RELACIONADAS CON HACER LOGIN -------*/
@@ -53,34 +8,32 @@ function hacerlogin(){
 	let loginForm = document.querySelectorAll("form")[0];
 	let value= new FormData(loginForm);
 
-
-	//fd.append('login', 'usuario2');
-	//fd.append('pwd', 'usuario2');
-
 	fetch(url, {'method':'POST', 'body':value}).then(function(respuesta){
 
 		if(!respuesta.ok){
-			//respuesta.json().then(function(datos){
-			console.log('No esta bien hecho, no se han encontrado los datos en la database');
-			document.getElementById('usuariologin').focus();
 
+			respuesta.json().then(function(datos){
+					console.log(datos);
 
+			})
+
+			document.getElementById('usuario').focus();
 			document.getElementById('alerta').innerHTML = '<p>Los datos son incorrectos. </p>' //muestra nueva_receta
-			//let html='<p> El usuario o contra seña es inkorecto2</p>';
 			location.href='#openModal';
-			//document.getElementById('login').reset();
+			document.getElementById('usuario').autofocus();
+
+
 			}
 		else{
-			respuesta.json().then(function(datos){
+
+				respuesta.json().then(function(datos){
 				console.log(datos);
 				sessionStorage.setItem('usuario', JSON.stringify(datos));
 				location.href='index.html';
 				barradenav();
 			});
 		}
-	}, function(respuesta){
-		console.log('NO HA HECHO EL FECH');
-	});
+	}, );
 
 	return false;
 }
@@ -124,18 +77,22 @@ function vaciar(){
 	sessionStorage.clear();
 }
 
+
 /*------- FUNCIONES RELACIONADAS CON INDEX -------*/
 
-function cargarUltimas(){
+var pag = 0;
+var totalPag = 0;
 
-	var url = 'rest/receta/?u=6';
+function cargarUltimas(pag){
+
+	var url = 'rest/receta/?pag=' + pag + '&lpag=6';
 	mostrarRecetas(url,'contenidoIndex');
 
 }
 
-function cargarUltimasBusq() {
+function cargarUltimasBusq(pag) {
 
-	var url = 'rest/receta/?u=6';
+	var url = 'rest/receta/?pag=' + pag + '&lpag=6';
 	mostrarRecetas(url,'contenidoResultado');
 
 }
@@ -147,26 +104,128 @@ function mandarBusqueda() {
 
 }
 
-function busquedita() {
+function busquedita(pag) {
 
 	if(window.location.href!=='http://localhost/pcw/practica02/buscar.html'){
 		var parametros = window.location.href.split("=")[1];
+		var final = window.location.href.split("?")[1];
+		var letra = final.split("=")[0];
 		console.log(parametros);
 		if(parametros===''){
-			cargarUltimasBusq();
+			cargarUltimasBusq(pag);
+		}
+		else if(letra=='a') {
+			var url = 'rest/receta/?pag=' + pag + '&lpag=6&a=' + parametros;
+			mostrarRecetas(url,'contenidoResultado');
 		}
 		else {
-			// hacer peticion fetch get con la siguiente url
-			var url = 'rest/receta/?t=' + parametros;
+			var url = 'rest/receta/?pag=' + pag + '&lpag=6&t=' + parametros;
 			mostrarRecetas(url,'contenidoResultado');
 		}
 	}
 	else {
-		cargarUltimasBusq();
+		cargarUltimasBusq(pag);
 	}
 
 }
 
+/*------- FUNCIONES RELACIONADAS CON PAGINACION -------*/
+
+	/*-----PAGINACION INDEX-----*/
+
+function primeraPag() {
+
+	if(pag!=0){
+		document.getElementById("contenidoIndex").innerHTML = '';
+		document.getElementById("paginacion").innerHTML = '';
+		pag=0;
+		cargarUltimas(pag);
+	}
+
+}
+
+function anteriorPag() {
+
+	if(pag!=0){
+		document.getElementById("contenidoIndex").innerHTML = '';
+		document.getElementById("paginacion").innerHTML = '';
+		pag = pag - 1;
+		cargarUltimas(pag);
+	}
+
+
+}
+
+function siguientePag() {
+
+	if(pag<totalPag){
+		document.getElementById("contenidoIndex").innerHTML = '';
+		document.getElementById("paginacion").innerHTML = '';
+		pag = pag + 1;
+		cargarUltimas(pag);
+	}
+
+	
+}
+
+function ultimaPag() {
+	
+	if(pag<totalPag){
+		document.getElementById("contenidoIndex").innerHTML = '';
+		document.getElementById("paginacion").innerHTML = '';
+		pag = totalPag - 1;
+		cargarUltimas(pag);
+	}
+
+}
+
+	/*-----PAGINACION BUSQUEDA-----*/
+
+function primeraPagBusq() {
+
+	if(pag!=0){
+		document.getElementById("contenidoResultado").innerHTML = '';
+		document.getElementById("paginacionBusq").innerHTML = '';
+		pag=0;
+		cargarUltimas(pag);
+	}
+
+}
+
+function anteriorPagBusq() {
+
+	if(pag!=0){
+		document.getElementById("contenidoResultado").innerHTML = '';
+		document.getElementById("paginacionBusq").innerHTML = '';
+		pag = pag - 1;
+		cargarUltimas(pag);
+	}
+
+
+}
+
+function siguientePagBusq() {
+
+	if(pag<totalPag){
+		document.getElementById("contenidoResultado").innerHTML = '';
+		document.getElementById("paginacionBusq").innerHTML = '';
+		pag = pag + 1;
+		cargarUltimas(pag);
+	}
+
+	
+}
+
+function ultimaPagBusq() {
+	
+	if(pag<totalPag){
+		document.getElementById("contenidoResultado").innerHTML = '';
+		document.getElementById("paginacionBusq").innerHTML = '';
+		pag = totalPag - 1;
+		cargarUltimas(pag);
+	}
+
+}
 
 
 /*------- FUNCIONES RELACIONADAS CON REGISTRO -------*/
@@ -193,7 +252,7 @@ function registramen(formulario){
 	fetch(url, {'method':'POST', 'body':value}).then(function(respuesta){
 
 			if(!respuesta.ok){
-				//respuesta.json().then(function(datos){
+
 				respuesta.json().then(function(datos){
 					console.log(datos);
 
@@ -229,113 +288,101 @@ function limpiarBusqueda(){
 
 }
 
-function busqueda(){
+function busqueda(pag){
+
+
+	var url = 'rest/receta/?pag=' + pag + '&lpag=6';
+
+
+	if(document.getElementById('nombre').value!=""){
+		var nombre = document.getElementById('nombre').value;
+		url = url + '&n=' + nombre;
+	}
+	if(document.getElementById('ingredientes').value!=""){
+		var ingredientes = document.getElementById('ingredientes').value;
+		url = url + '&i=' + ingredientes;
+	}
+	if(document.getElementById('tiempo1').value!=""){
+		var tiempo1 = document.getElementById('tiempo1').value;
+		url = url + '&di=' + tiempo1;
+	}
+	if(document.getElementById('tiempo2').value!=""){
+		var tiempo2 = document.getElementById('tiempo2').value;
+		url = url + '&df=' + tiempo2;
+	}
+	if(document.getElementById('dificultad').value!="default"){
+		var dificultad = document.getElementById('dificultad').value;
+		url = url + '&d=' + dificultad;
+	}
+	if(document.getElementById('comensales').value!=""){
+		var comensales = document.getElementById('comensales').value;
+		url = url + '&c=' + comensales;
+	}
+	if(document.getElementById('autor').value!=""){
+		var autor = document.getElementById('autor').value;
+		url = url + '&a=' + autor;
+	}
+
+	console.log(url);
+
+	document.getElementById("contenidoResultado").innerHTML = '';
+	document.getElementById("paginacionBusq").innerHTML = '';
+	mostrarRecetas(url, 'contenidoResultado');
 
 
 }
 
-/*function busquedita(){
-	console.log("entra a busquedita obvizmente");
-  	var url = 'rest/receta/?t=';
-
-	console.log(url);
-	var urlfin=document.getElementById("buscar").value;
-	urlllevar='buscar.html/u?=' + urlfin;
-	console.log(urlllevar);
-	location.href=urlllevar;
-
-  fetch(url).then(function(response){
-    if(!response.ok){ // if(response.status!=200)
-    		console.log("SALE UN ERROR estoy enfadada");
-
-      console.log('Error(' + response.status + '): ' + response.statusText);
-      return;
-    }
-    	console.log("AQUI NO SALE ERROR ira no seeeeeeeeeeee");
-
-    response.json().then(function(data) {
-    console.log(data);
-
-  });
-  }).catch(function(errorcito) {
-    console.log('Fetch Error: ', errorcito);
-  });
-}*/
-
-
-
-
-
-
-
-
-
-/*
-	var url = './buscar.html?buscar=' + parametros;
-	var parametros = getParameterByNam('buscar');
-	/*var param='?buscar=' + parametros;
-	console.log('hola3');
-
-	console.log(url);
-
-
-	mostrarRecetas(url);
-
-}*/
-
-/*function getParameterByName(name) {
-
-	console.log('hola2');
-	name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
-	let href = window.location;
-	var regexS = "[\\?&]"+name+"=([^&#]*)";
-	var regex = new RegExp(regexS);
-	var results = regex.exec(href);
-
-	if( results == null )
-		return "";
-	else
-		return decodeURIComponent(results[1].replace(/\+/g, " "));
-	var regex=new RegExp("[\\?&]" + name + "=([^&#]*)"),
-	results = regex.exec(location.search);
-	return results===null ? "": decodeURIComponent(results[1].replace(/\+/g, " "));
-}*/
-
 function mostrarRecetas(url, sitio) {
-	contar=0;
 
 	fetch(url).then(function(respuesta){
                 if(!respuesta.ok){
-                    console.log('Error(' + respuesta.status + '): ' + respuesta.statusText);
-                    return;
+
+                    respuesta.json().then(function(datos){
+					console.log(datos);
+					})
+
                 }
-								else {
-												respuesta.json().then(function(datos){
+				else {
+						respuesta.json().then(function(datos){
 
-			                    var elemento = document.getElementById(sitio);
-			                    if (elemento) {
-			                        for( let i = 0 ; i < datos.FILAS.length; i++){
-			                        	
-			                            var receta = datos.FILAS[i];
-			                            elemento.innerHTML = elemento.innerHTML +
+	                    var elemento = document.getElementById(sitio);
+	                    totalPag = Math.ceil(datos.TOTAL_COINCIDENCIAS/6);
+	                    if (elemento) {
+	                        for( let i = 0 ; i < datos.FILAS.length; i++){
+	                        	
+	                            var receta = datos.FILAS[i];
+	                            elemento.innerHTML = elemento.innerHTML +
 
-						                    	'<section>' +
-																	'<h4><a href="receta.html?id=' + receta.id + '" class="tituloHome"> ' + receta.nombre + '</a></h4>' +
-																	'<a href="receta.html?id=' + receta.id + '"><img src="fotos/' + receta.fichero + '" class="fotoHome" alt="' + receta.descripcion_foto + '"></a>' +
-																	'<ul>' +
-																	'<li><b><a href="buscar.html?id=' + receta.autor + '">Autor: </a></b> '+ receta.autor +' </li>' +
-																	'<li><b>Likes</b> '+ receta.positivos +' </li>'+
-																	'<li><b>Dislikes</b> '+ receta.negativos +' </li>'+
-																	'<li><b>Fecha</b> '+ receta.fecha +' </li>'+
-																	'</ul>'+
-																	'</section>'
-		                        }
-		                    	}
+				                    	'<section>' +
+										'<h4><a href="receta.html?id=' + receta.id + '" class="tituloHome"> ' + receta.nombre + '</a></h4>' +
+										'<a href="receta.html?id=' + receta.id + '"><img src="fotos/' + receta.fichero + '" class="fotoHome" alt="' + receta.descripcion_foto + '"></a>' +
+										'<ul>' +
+										'<li><b><a href="buscar.html?a=' + receta.autor + '">Autor: </a></b> '+ receta.autor +' </li>' +
+										'<li><b>Likes</b> '+ receta.positivos +' </li>'+
+										'<li><b>Dislikes</b> '+ receta.negativos +' </li>'+
+										'<li><b>Fecha</b> '+ receta.fecha +' </li>'+
+										'</ul>'+
+										'</section>'
+
+                        	}
+
+	                        pagMostrar = pag + 1;
+
+	                        elemento.innerHTML = elemento.innerHTML +
+
+	                        '<ul class="paginacion">' +
+							'<li><button id="primera" onclick="primeraPag();">Primera</button>' +
+							'<li><button type="button" id="anterior" onclick="anteriorPag();">&laquo;</button>' +
+							'<li><p>Página ' + pagMostrar + ' de ' + totalPag + '</p>' +
+							'<li><button type="button" id="siguiente" onclick="siguientePag();">&raquo;</button>' +
+							'<li><button type="button" id="ultima" onclick="ultimaPag();">Última</button>' +
+							'</ul><br><br><br><br>'
+                    	}
 
 
-	                			});
+            			});
 
-										}
+				}
 
 
             });
@@ -377,6 +424,7 @@ function pedirReceta() {   // COGE LA URL Y HACE LA PETICION
   fetch(url).then(paginareceta, function(e) {
     console.log();
   });
+
 }
 
 
@@ -638,27 +686,6 @@ function coments(){
 
 
 function realizarcomentario(aidi){
- /* let url = './rest/receta/' + aidi + '/comentario';                        // Creamos una URL con la ubicacion de la carpeta
-  let valor = new FormData(aidi);                         // Creamos un contenedor de clave/valor
-
-  fetch(url, {'method':'POST', 'body':valor}).then(function(response){ // Conectar peticion con el servidor: /rest/usuario + info de POST
-    if(!response.ok){ 
-        response.json().then(function(datos){
-          console.log(datos);  
-          console.log("no ha conectao chaval");
-        });
-    }
-    else{ 
-        response.json().then(function(datos){
-          console.log(datos);
-          console.log('fua la mejor');
-        });
-    }
-  }, function(response){ 
-    console.log('fuaaaaaaaaaa');
-  });
-  return false;*/
-
 
   let id = conseguirID();
 	let xhr = new XMLHttpRequest(),
@@ -674,21 +701,26 @@ function realizarcomentario(aidi){
 	fd.append('titulo',  document.querySelector('input[id=titulo]').value);
 	fd.append('texto',  document.querySelector('textarea[id=texto]').value);
 
+	if(document.querySelector('input[id=titulo]').value=='' || document.querySelector('textarea[id=texto]').value==''){
 
-	xhr.open('POST',url,true);
-	
-	xhr.onload = function()
-	{
-		console.log(xhr.responseText);
-		console.log("ha ocurrido bien");
-		console.log(id);
-		console.log(aidi);
-		location.href="#openModal";
+		location.href="#modaldelmal";
 
-	};
+	 }else{
 
-	xhr.setRequestHeader('Authorization', usu.clave);
-	xhr.send(fd);
+		xhr.open('POST',url,true);
+		
+		xhr.onload = function()
+		{
+			console.log(xhr.responseText);
+			console.log(id);
+			console.log(aidi);
+			location.href="#openModal";
+
+		};
+
+		xhr.setRequestHeader('Authorization', usu.clave);
+		xhr.send(fd);
+	}
 
 	return false;
 
@@ -701,13 +733,10 @@ function realizarcomentario(aidi){
 function compruebo(){
 
 	if(sessionStorage.getItem("usuario")){
-		console.log("perfe");
 	}
 	else{
 
 		location.href="index.html";
-
-		console.log("perfeno");
 
 	}
 }
@@ -785,7 +814,7 @@ function loadfile(source){
 		}
 	}
 	else{
-
+		document.querySelector('input[type=file]').click();
 	}
 }
 
@@ -844,7 +873,6 @@ function subidafoto(id, pos, usuario){
 			console.log(xhr.responseText);
 			let response = JSON.parse(xhr.responseText);
 				if(response.RESULTADO=="OK"){
-					console.log("FOTO SUBIDA OK")
 				}
 				else{
 					console.log("ERROR");
@@ -890,44 +918,44 @@ function nuevarecetasubida(){
     if(usuario.login==''){
     	location.href="#openmodalusuario";
     }
-    if(document.getElementById('fichero')==null){
-               		location.href="#openModalerrorFOTO";
-               	}else{
+    for(var i=0; i<=contador; i++){
+                 if(document.getElementById('fichero' + i)==null){
+                  location.href="#openModalerrorFOTO";
+    }else{
 
-    fetch(url,{'method':'POST','body':valor, headers:{'Authorization':usuario.clave}}).then(function (response){
-        if(!response.ok){
-            response.json().then(function(datos){
-                console.log(datos);
-                 console.log('deberia NO meerlo')
-                 location.href="#openModalerror";
-            })
-        }
-        else{
-            response.json().then(function(datos){
-                console.log(datos);
-                console.log('deberia meerlo');
-               	
-               	for(var i=0; i<=contador; i++){
-               		if(document.getElementById('fichero' + i)!=null){
-               			subidafoto(datos.ID, i, usuario);
-               		}
-               	}
-               	
-               		subidaingredientes(datos.ID, usuario);
 
-               	location.href="#openModalBIENHECHO";
-               	//loadfile("img/noimg.jpg");
-               	document.getElementById("formulario").reset();
-               	
-               	 
+	    fetch(url,{'method':'POST','body':valor, headers:{'Authorization':usuario.clave}}).then(function (response){
+	        if(!response.ok){
+	            response.json().then(function(datos){
+	                console.log(datos);
+	                 location.href="#openModalerror";
+	            })
+	        }
+	        else{
+	            response.json().then(function(datos){
+	                console.log(datos);
+	               	
+	               	for(var i=0; i<=contador; i++){
+	               		if(document.getElementById('fichero' + i)!=null){
+	               			subidafoto(datos.ID, i, usuario);
+	               		}
+	               	}
+	               	
+	               		subidaingredientes(datos.ID, usuario);
 
-               	
-        })
-    }}, function(response){
-        console.log('emmmm');
-    });
+	               	location.href="#openModalBIENHECHO";
+	               	//loadfile("img/noimg.jpg");
+	               	document.getElementById("formulario").reset();
+	               	
+	               	 
 
-		}
+	               	
+	        })
+	    }}, function(response){
+	        console.log('emmmm');
+	    });
+	}
+	}
     return false;
  }
 
@@ -942,7 +970,6 @@ function nuevarecetasubida(){
  	if(xhr){
  		for(var i=0; i<lista.length; i++){
  			enviarIngredientes.push(lista[i].innerText);
- 			 	console.log("cosa");
 
  		}
 
@@ -954,13 +981,7 @@ function nuevarecetasubida(){
  		xhr.open('POST', url, true);
  		xhr.onload = function(){
  			let response = JSON.parse(xhr.responseText);
- 			if(response.RESULTADO == "OK"){
- 				console.log("deberia ir de p madre");
-
- 			}else{
- 				console.log("mira no funca");
- 			}
- 			console.log("al menos entra al primer if... ");
+ 			
  		};
 
  	}

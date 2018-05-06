@@ -9,7 +9,6 @@ body {
 	padding: 0;
 	
 }
-
 .top{
 	float:right;
 	margin-right: 10%;
@@ -165,23 +164,31 @@ body>div>div>section{
  	transition: 1s ease;
 }
 
-.paginacion {
-	position:relative;
-    display: inline-block;
-    float: right;
+
+
+ul.paginacion {	
+	float: right;
+	list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow:hidden;
+    background-color:#c5f9f9; 
 }
 
-.paginacion a {
-    float: left;
-    padding: 8px 16px;
-    text-decoration: none;
+ul.paginacion > li {
+	display: inline;
+	float: left;
+	margin: 0;
+    padding: 5px 10px;
+    overflow:hidden;
 }
 
-.paginacion a:hover {
+
+ul.paginacion > li button:hover {
  	background-color: #ffbda3;
 }
 
-.paginacion a.act {
+ul.paginacion > li button.act {
    	background-color: #ffbda3;
     color: #FF8B94;
 }

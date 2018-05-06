@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 
 
-<html>
+<html lang="es">
   <head>
     <title>Sweet Home</title><a name="top"></a>
 
@@ -48,7 +48,7 @@
 
     
      <div class="formulario">
-      <p> <strong>Práctica 1</strong> de la asignatura <strong> Programación del cliente web </strong>, perteneciente al segundo curso de la carrera <strong>Ingeniería Multimedia</strong> de la <strong>Universidad de Alicante</strong>.</p>
+      <p> <strong>Práctica 2</strong> de la asignatura <strong> Programación del cliente web </strong>, perteneciente al segundo curso de la carrera <strong>Ingeniería Multimedia</strong> de la <strong>Universidad de Alicante</strong>.</p>
       <form>
         <h3>Gabriela Gonzálvez Hernández</h3>
         <p><strong> DNI: </strong> 48675320-Y</p>
@@ -66,24 +66,20 @@
         </form><br>
 
         <h3> DOCUMENTACIÓN DE LA PRÁCTICA</h3>
-        <p> Los <strong>objetivos principales</strong> de la práctica consistian en aprender a crear documentos web desde cero utilizando HTML y CSS para el estilo en cuestión, y además aprender a diseñar documentos web <strong> responsive</strong>, empleando la técnica <i>Mobile first</i> para que se visualicen correctamente en cualquier dispositivo, independientemente de su tamaño. <br><br>
-                Éstos objetivos <strong>han sido cumplidos</strong> en su totalidad, debido a que la web creada es adaptable para los tres tipos de tamaño, ya sea en ordenador, tablet o móvil, y además hemos aprendido a crear documentos web en HTML desde cero, así como aprender a dominar todas las herramientas css, o la mayoría de ellas. <br><br>
-                En un principio, <strong> todas </strong> las partes de la práctica que se han pedido han sido implementadas correctamente. Además, hemos hecho uso de <strong>icon fonts</strong> (de la página fontello.com), así como de <strong>web fonts</strong> (de la página web de google web fonts). <br><br>
+        <p> Los <strong>objetivos principales</strong> de esta segunda práctica consistían en aprender a sacar el máximo partido al lenguaje de programación JavaScript en el lado del cliente y aprender a hacer uso de tecnologías como <i>AJAX</i> o el <i>API Fetch</i> para realizar peticiones a un servidor RESTful. <br><br>
+                Éstos objetivos <strong>han sido cumplidos</strong> en su mayoría ya que hemos conseguido aplicar estas tecnologías a las distintas secciones que componen nuestra web, consiguiendo así agregarle la parte dinámica de la cual carecía la práctica anterior.<br><br>
+                En un principio, <strong> todas </strong> las partes de la práctica que se han pedido han sido implementadas correctamente. Además, hemos hecho uso del <strong>API Fetch</strong> así como de <strong>AJAX</strong> según veíamos conveniente en cada interacción que requería una petición asíncrona al servidor. <br><br>
                 Aunque todas las partes de la práctica hayan sido implementadas, cabe destacar algunas <strong>dificultades encontradas</strong> que nos han podido obstaculizar la implementación de ésta: <br>
                   <ul>
-                  <li> La <strong>barra de navegación</strong> en un principio ha sido bastante intuitiva de realizar, pero en el momento de la adaptación responsive, según indica la práctica, sólo deben verse los iconos. Ha sido bastante complicado el hecho de la reorganización de la <i>navbar</i> pero finalmente hemos conseguido llevarla a cabo correctamente.  </li><br>
-                  <li> En cuanto a los <strong>icon fonts</strong>, también ha sido complicada su implementación, ya que no conocíamos la forma correcta de introducir éstos iconos, ni cual era el .css que debíamos introducir, ni sus clases. Esperamos haberlo realizado correctamente.  </li><br>
-                  <li> Además, para poder hacer desaparecer el texto en el <strong>diseño responsive de tablet</strong>, en un principio habíamos separado el texto en un contenedor <i> dt </i>, pero al introducirlo en el <strong><i>validador HTML</i></strong>, nos apareció el error de que no era la manera más correcta de implementarlo. Finalmente tuvimos que hacer cambios en toda la barra de navegación, y, después de mucho esfuerzo y observar muchos ejemplos y probar maneras diferentes conseguimos implementarlo correctamente. </li><br>
-                  <li> Otra de las dificultades encontradas ha sido el <strong>menú hamburguesa</strong>, ya que al principio nuestra barra de navegación no era fácilmente adaptable, era demaiado ancho y además imposibilitaba la visibilidad de todos los campos. Finalmente conseguimos arreglarlo con muchas pruebas y diferentes tamaños.  </li>
+                  <li>El obstáculo principal y más difícil de esta práctica sin duda ha sido entender el funcionamiento de las tecnologías <strong>AJAX</strong> Y <strong>FETCH</strong> a lo que se le ha sumado la dificultad de aprender un nuevo lenguaje <strong>(JavaScript)</strong> en tan poco tiempo. Por este motivo no hemos podido completar a la perfección la práctica ya que no sabíamos como realizar o perfeccionar algunos detalles.</li><br>
+                  <li> La <strong>búsqueda rápida</strong> ha dado problemas debido a que no quedaba del todo clara su implementación ya que consisitía en una redirección hacia la página donde debe realizarse la búsqueda en concreto, pero tras resolver la duda de como estructurar estas funciones ha sido fácil de terminar. </li><br>
+                  <li> En cuanto a <strong>búsqueda</strong> después de tener la función que muestra las recetas con una petición FETCH bien implentada, la única dificultad ha sido averiguar como crear las <i>URL</i> que se debía mandar a esta petición en cada caso. </li><br>
+                  <li> Las secciones más difíciles de nuestra web han sido sin duda <strong>Nueva Receta</strong> y <strong> Receta </strong>. En <i>Nueva Receta</i> hemos tenido una gran cantidad de obstáculos, como por ejemplo en el envío del formulario y sobretodo en el tratamiento de las fotos. Ha sido complicado poder mostrar la foto seleccionada y también subir esta misma. Por otra parte, las peticiones de subir ingredientes también han sido de gran dificultad. Y por último destacar también la dificultad de mostrar un mensaje de error cuando falta un parámetro en el formulario de la nueva receta.</li><br>
+                  <li> En la sección de <i>Receta</i> ha dificultado tener que trasladar todo el HTML al JavaScript. También han habido muchos obstáculos al intentar coger el ID de la receta y mostrar las fotos de la misma. Se puede decir que todo el manejo de ficheros ha sido una parte complicada de la tarea. Por último, no hemos podido implementar los votos de la receta y corregir los comentarios por falta de tiempo.</li>
                 </ul>
-      <p> En el ámbito de los <strong>navegadores</strong> hemos detectado ligeros cambios e imposibilidades: 
-        <ul>
-                  <li> Lo primero de todo el tipo <strong>date</strong>, que no es soportable en todos los navegadores. </li><br>
-                  <li> La posicion de las <strong>secciones</strong> se encuentra desplazada ligeramente hacia la derecha. </li><br>
-                  <li> La <strong>fuente</strong> escogida no es visible en todos los navegadores, encontramos un cambio de fuente al cambiar de navegador pero no es excesivamente un error importante. </li>
-                </ul>
+      
 
-      <p> En general consideramos que ésta práctica ha sido bastante <strong>lograda</strong>, independientemente de las dificultades y los obstaculos, hemos sabido afrontarlos y cumplir los objetivos propuestos. Además hemos ampliado nuestros conocimientos respecto a <strong>HTML y CSS</strong> y mejorado lo poco que ya sabíamos. </p>
+      <p> En general consideramos que ésta práctica ha sido considerablemente<strong> difícil</strong> pero creemos que hemos logrado un <strong>resultado satisfactorio</strong> pese a los obstáculos, hemos sabido afrontarlos y cumplir los objetivos propuestos. Además hemos ampliado nuestros conocimientos respecto a <strong>JavaScript, AJAX y FETCH</strong> y mejorado lo poco que ya sabíamos. </p>
       </div>
 
 

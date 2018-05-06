@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 
 
-<html>
+<html lang="es">
 	<head>
 		<title>Sweet Home</title><a name="top"></a>
 
@@ -13,7 +13,7 @@
 		<script src="javita.js"></script>
 	</head>
 
-	<body onload="busquedita(); busqueda(); return false;">
+	<body onload="busquedita(0); return false;">
 
 	<!-- Header -->
 
@@ -48,7 +48,7 @@
 		<h2 class="formulario">Búsqueda</h2>
 
 		<div class="formulario">
-			 <form action="resultado.html" id="formB">
+			 <form action="buscar.html" id="formB" onsubmit="busqueda(0); return false">
 
 				<label for="nombre">Nombre</label>
 				<input class="formulario" type="text" id="nombre" placeholder="Nombre de receta..." autofocus/>
@@ -58,13 +58,14 @@
 
 					<label for="tiempo">Tiempo de preparación:</label><br/>
 					Entre
-					<input type="number" id="tiempo" min="1" max="300" />
+					<input type="number" id="tiempo1" min="1" max="300" />
 					min y
-					<input type="number" min="1" max="300" /> min
+					<input type="number" id="tiempo2" min="1" max="300" /> min
 
 				<br />
 				<label for="dificultad">Dificultad</label>
 				<select id="dificultad">
+					<option value="default">...</option>
 					<option value="facil">Fácil</option>
 					<option value="media">Media</option>
 					<option value="dificil">Difícil</option>
@@ -77,8 +78,8 @@
 				<label for="autor">Autor</label>
 				<input type="text" id="autor" placeholder="Nombre de autor...">
 
-				<input type="button" value="Limpiar" onclick="limpiarBusqueda();"/>
-				<input type="submit" value="Buscar"/>
+				<input type="button" value="Limpiar" onclick="limpiarBusqueda(); return false"/>
+				<input type="submit" value="Buscar" return false" />
 	        </form>
         </div>
 
@@ -94,12 +95,12 @@
 
 		</div>
 
-		<div class="paginacion">
-			<a href="index.html">&laquo;</a>  <!-- caracter « -->
-			<a href="index.html" class="act">1</a>
-			<a href="index.html">2</a>
-			<a href="index.html">&raquo;</a>
-		</div><br><br>
+		<div id="paginacionBusq">
+
+			<!-- aqui van la paginacion -->
+
+			
+		</div><br><br><br>
 
 	</div>
 
